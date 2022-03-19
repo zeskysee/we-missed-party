@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://party_house.gd" type="Script" id=1]
 [ext_resource path="res://sprites/light_window.png" type="Texture" id=2]
+[ext_resource path="res://speech.tscn" type="PackedScene" id=3]
 
 [node name="PartyHouse" type="Node2D"]
 script = ExtResource( 1 )
@@ -92,3 +93,7 @@ position = Vector2( 315, 458 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, 300 )
+
+[node name="Speech" parent="." instance=ExtResource( 3 )]
+position = Vector2( 335, 364 )
+text = "It has been so long since I've been to a party..."
