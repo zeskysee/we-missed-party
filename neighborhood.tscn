@@ -22,7 +22,7 @@ gradient = SubResource( 3 )
 [sub_resource type="PhysicsMaterial" id=5]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 3750, 16.5 )
+extents = Vector2( 4000, 16.5 )
 
 [node name="Neighborhood" type="Node2D"]
 script = ExtResource( 4 )
@@ -30,12 +30,12 @@ script = ExtResource( 4 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Static" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 2048, 0 )
+motion_mirroring = Vector2( 3840, 0 )
 
 [node name="Gradient" type="Sprite" parent="ParallaxBackground/Static"]
-position = Vector2( -765.784, -134.005 )
+position = Vector2( -1526.2, -134.007 )
 rotation = 1.5708
-scale = Vector2( 0.436021, 6510.69 )
+scale = Vector2( 0.436021, 8031.52 )
 texture = SubResource( 2 )
 
 [node name="Ground" type="Sprite" parent="ParallaxBackground/Static/Gradient"]
@@ -45,7 +45,7 @@ texture = SubResource( 4 )
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.04, 1 )
-motion_mirroring = Vector2( 2048, 0 )
+motion_mirroring = Vector2( 3840, 0 )
 
 [node name="Cloudgroup" type="Node2D" parent="ParallaxBackground/Clouds"]
 
@@ -99,7 +99,7 @@ __meta__ = {
 
 [node name="Extras" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.98, 1 )
-motion_mirroring = Vector2( 2048, 0 )
+motion_mirroring = Vector2( 3840, 0 )
 
 [node name="House2" type="Sprite" parent="ParallaxBackground/Extras"]
 modulate = Color( 1, 1, 1, 0.784314 )
@@ -132,7 +132,7 @@ __meta__ = {
 }
 
 [node name="Housing" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 2048, 0 )
+motion_mirroring = Vector2( 3840, 0 )
 
 [node name="PartyHouseStart" type="Sprite" parent="ParallaxBackground/Housing"]
 position = Vector2( 0, 504 )
@@ -189,7 +189,7 @@ __meta__ = {
 }
 
 [node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 2048, 0 )
+motion_mirroring = Vector2( 3840, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Foreground"]
 position = Vector2( 420, 455 )
@@ -254,6 +254,72 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Foreground2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 3840, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Foreground2"]
+position = Vector2( 420, 455 )
+
+[node name="PlaceholderPavement" type="ColorRect" parent="ParallaxBackground/Foreground2/Sprite"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1961.5
+margin_top = 54.5
+margin_right = 2081.5
+margin_bottom = 89.5
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="ColorRect" parent="ParallaxBackground/Foreground2/Sprite/PlaceholderPavement"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2021.5
+margin_top = -15.5
+margin_right = 2021.5
+margin_bottom = 130.5
+color = Color( 0.631373, 0.631373, 0.6, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Shadow" type="ColorRect" parent="ParallaxBackground/Foreground2/Sprite/PlaceholderPavement/Base"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2021.5
+margin_top = -50.0
+margin_right = 2021.5
+margin_bottom = -41.0
+color = Color( 0.529412, 0.529412, 0.494118, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PlaceholderRoad" type="ColorRect" parent="ParallaxBackground/Foreground2/Sprite"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1961.5
+margin_top = 89.5
+margin_right = 2081.5
+margin_bottom = 250.5
+color = Color( 0.223529, 0.223529, 0.231373, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2( 2, 529 )
 collision_layer = 4
@@ -292,4 +358,5 @@ remote_path = NodePath("../../Camera")
 [connection signal="contact" from="NPCList/NPC" to="Player" method="_on_NPC_contact"]
 [connection signal="contact_loss" from="NPCList/NPC" to="Player" method="_on_NPC_contact_loss"]
 
+[editable path="NPCList/NPC"]
 [editable path="Player"]

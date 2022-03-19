@@ -3,6 +3,7 @@ extends Area2D
 signal contact
 signal contact_loss
 
+
 func _on_NPC_body_entered(body):
 	emit_signal("contact")
 
