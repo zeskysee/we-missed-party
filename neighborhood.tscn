@@ -147,20 +147,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PartyHouseEnd" type="Sprite" parent="ParallaxBackground/Housing"]
-visible = false
-position = Vector2( 1250, 504 )
-
-[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Housing/PartyHouseEnd"]
-margin_left = -159.0
-margin_top = -219.0
-margin_right = 159.0
-margin_bottom = 40.0
-color = Color( 0.827451, 0.717647, 0.482353, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="House" type="Sprite" parent="ParallaxBackground/Housing"]
 position = Vector2( 407, 493 )
 
