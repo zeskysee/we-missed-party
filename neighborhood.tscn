@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://camera_spectate.gd" type="Script" id=1]
 [ext_resource path="res://actors/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/cloud_1.png" type="Texture" id=3]
 [ext_resource path="res://neighborhood.gd" type="Script" id=4]
+[ext_resource path="res://sprites/cloud_2.png" type="Texture" id=5]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -44,57 +46,39 @@ texture = SubResource( 4 )
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.04, 1 )
-motion_mirroring = Vector2( 3840, 0 )
+motion_mirroring = Vector2( 1440, 0 )
 
 [node name="Cloudgroup" type="Node2D" parent="ParallaxBackground/Clouds"]
 
 [node name="Cloud" type="Sprite" parent="ParallaxBackground/Clouds/Cloudgroup"]
 position = Vector2( 708, 100 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 3 )
 
-[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Clouds/Cloudgroup/Cloud"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -49.0
-margin_top = -20.0
-margin_right = 49.0
-margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Cloud4" type="Sprite" parent="ParallaxBackground/Clouds/Cloudgroup"]
+position = Vector2( -234, 100 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Cloud5" type="Sprite" parent="ParallaxBackground/Clouds/Cloudgroup"]
+position = Vector2( -179, 119 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
 
 [node name="Cloud2" type="Sprite" parent="ParallaxBackground/Clouds/Cloudgroup"]
 position = Vector2( 186, 72 )
+scale = Vector2( -0.3, 0.3 )
+texture = ExtResource( 5 )
 
-[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Clouds/Cloudgroup/Cloud2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -49.0
-margin_top = -20.0
-margin_right = 49.0
-margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Cloud6" type="Sprite" parent="ParallaxBackground/Clouds/Cloudgroup"]
+position = Vector2( -98, 92 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
 
 [node name="Cloud3" type="Sprite" parent="ParallaxBackground/Clouds/Cloudgroup"]
 position = Vector2( 924, 50 )
-
-[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Clouds/Cloudgroup/Cloud3"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -49.0
-margin_top = -20.0
-margin_right = 49.0
-margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+scale = Vector2( -0.4, 0.4 )
+texture = ExtResource( 5 )
 
 [node name="Extras" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.98, 1 )
@@ -331,7 +315,6 @@ is_tracked = true
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -3.05176e-05, 510 )
 scale = Vector2( 0.7, 0.7 )
-speed = Vector2( 450, 600 )
 
 [node name="CameraTracker" parent="Player" index="3"]
 remote_path = NodePath("../../Camera")
