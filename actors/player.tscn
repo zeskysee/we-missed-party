@@ -31,9 +31,9 @@ default_font = SubResource( 3 )
 Label/colors/font_color = Color( 0.411765, 0.545098, 0.584314, 1 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 14
+collision_mask = 12
 script = ExtResource( 4 )
-speed = Vector2( 800, 1400 )
+speed = Vector2( 500, 600 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1.52588e-05, -73.9 )
@@ -54,5 +54,6 @@ margin_bottom = -144.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Press    ' spacebar '   to interact"
 align = 1

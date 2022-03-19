@@ -19,8 +19,6 @@ position = Vector2( 853, 559 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 223, 558 )
-collision_mask = 12
-speed = Vector2( 500, 900 )
 
 [connection signal="contact" from="NPC" to="Player" method="_on_NPC_contact"]
 [connection signal="contact_loss" from="NPC" to="Player" method="_on_NPC_contact_loss"]
