@@ -1,10 +1,6 @@
 extends Node2D
 
 
-# Minimum size of the speech bubble.
-const MINIMUM_SIZE = Vector2(79, 50)
-const LINE_BREAK_THRESHOLD = 225
-
 # Marks if this speech node is playing or not.
 export(bool) var is_playing = true
 # Time in seconds until this speech is completed.
@@ -40,6 +36,22 @@ func _process(delta):
 		if characters_shown < label.visible_characters:
 			audio_tick.play()
 			characters_shown = label.visible_characters
+
+
+func _on_destroy(animation_name):
+	if animation_name == "show":
+		queue_free()
+
+
+# Destroys the speech bubble and removes it from the game.
+func destroy():
+	hide_bubble()
+	animation_player.connect("animation_finished", self, "_on_destroy")
+
+
+# Plays the hide animation of the speech bubble.
+func hide_bubble():
+	animation_player.play_backwards("show")
 
 
 # Plays the show animation of the speech bubble.
