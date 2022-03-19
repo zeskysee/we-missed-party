@@ -1,16 +1,16 @@
 extends Node2D
 
 
-# Minimum size of the speech bubble.
-const MINIMUM_SIZE = Vector2(79, 50)
-const LINE_BREAK_THRESHOLD = 225
-
 # Marks if this speech node is playing or not.
 export(bool) var is_playing = true
+# If true, speech is skippable using the interact key.
+export(bool) var is_skippable = false
+# If true, automatically shows the bubble on ready.
+export(bool) var show_on_ready = true
 # Time in seconds until this speech is completed.
 export(float) var time_to_finish = 1.5
 # Used to set the Label text.
-export(String) var text = "Hi."
+export(String, MULTILINE) var text = "Hi."
 
 # Keep track of characters shown since last tick.
 var characters_shown = 0
@@ -30,7 +30,8 @@ onready var label = $Repositioning/Control/MarginContainer/Label
 func _ready():
 	label.text = text
 	label.percent_visible = 0
-	show_bubble()
+	if show_on_ready:
+		show_bubble()
 
 
 func _process(delta):
@@ -40,6 +41,32 @@ func _process(delta):
 		if characters_shown < label.visible_characters:
 			audio_tick.play()
 			characters_shown = label.visible_characters
+		if label.percent_visible == 1:
+			is_playing = false
+
+
+func _input(event):
+	if is_skippable and event.is_action_pressed("ui_accept"):
+		if is_playing:
+			time_elapsed = time_to_finish
+		elif label.percent_visible == 1:
+			destroy()
+
+
+func _on_destroy(animation_name):
+	if animation_name == "show":
+		queue_free()
+
+
+# Destroys the speech bubble and removes it from the game.
+func destroy():
+	hide_bubble()
+	animation_player.connect("animation_finished", self, "_on_destroy")
+
+
+# Plays the hide animation of the speech bubble.
+func hide_bubble():
+	animation_player.play_backwards("show")
 
 
 # Plays the show animation of the speech bubble.

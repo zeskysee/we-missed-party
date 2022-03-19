@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://party_house.gd" type="Script" id=1]
 [ext_resource path="res://sprites/light_window.png" type="Texture" id=2]
 [ext_resource path="res://speech.tscn" type="PackedScene" id=3]
+[ext_resource path="res://magic_monster.tscn" type="PackedScene" id=4]
 
 [node name="PartyHouse" type="Node2D"]
 script = ExtResource( 1 )
@@ -38,7 +39,7 @@ __meta__ = {
 }
 
 [node name="Window" type="Node2D" parent="."]
-position = Vector2( -161, 101 )
+position = Vector2( -28, 101 )
 
 [node name="ColorRect" type="ColorRect" parent="Window"]
 margin_left = 809.0
@@ -87,13 +88,26 @@ texture = ExtResource( 2 )
 energy = 0.5
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 315, 458 )
+position = Vector2( 698, 458 )
+
+[node name="Speech" parent="." instance=ExtResource( 3 )]
+position = Vector2( 755, 392 )
+is_skippable = true
+text = "It has been so long since I've
+been to a party..."
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, 300 )
 
-[node name="Speech" parent="." instance=ExtResource( 3 )]
-position = Vector2( 335, 364 )
-text = "It has been so long since I've been to a party..."
+[node name="MagicMonster" parent="." instance=ExtResource( 4 )]
+position = Vector2( 274, 496 )
+
+[node name="TestDestroy" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="tree_exited" from="Speech" to="." method="_on_first_speech_tree_exited"]
+[connection signal="timeout" from="TestDestroy" to="." method="_on_test_destroy_timeout"]
