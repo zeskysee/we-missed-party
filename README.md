@@ -3,8 +3,9 @@
 Community game for Wholesome Games Jam 2022
 
 
-## Credits
-| Filename 				| Author 	| Original 											| License	|
-| --- 					| --- 		| ---												| ---		|
-| speech_show.ogg		| Kenney	| maximize_007.ogg from Kenney's Interface Pack		| CC0		|
-| speech_tick.ogg		| Kenney	| bong_001.ogg from Kenney's Interface Pack			| CC0		|
+### Credits
+| Filename | Author | Original | License |
+| --- | --- | --- | --- |
+| sounds/speech_show.ogg | Kenney | [maximize_007.ogg from Kenney's Interface Sounds](https://www.kenney.nl/assets/interface-sounds) | CC0 |
+| sounds/speech_tick.ogg | Kenney | [bong_001.ogg from Kenney's Interface Sounds](https://www.kenney.nl/assets/interface-sounds) | CC0 |
+| fonts/minimal_3x5.ttf | kheftel | [Minimalist Pixel Fonts on opengameart.org](https://opengameart.org/content/minimalist-pixel-fonts)	| CC0 |
