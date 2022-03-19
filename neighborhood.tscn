@@ -1,0 +1,255 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://camera_spectate.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 3840
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.202186, 0.688525 )
+colors = PoolColorArray( 0.517647, 0.635294, 0.388235, 0, 0.65098, 0.623529, 0.552941, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[node name="Neighborhood" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Static" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1250, 0 )
+
+[node name="Gradient" type="Sprite" parent="ParallaxBackground/Static"]
+position = Vector2( 482, -134 )
+rotation = 1.5708
+scale = Vector2( 0.436021, 4015.12 )
+texture = SubResource( 2 )
+
+[node name="Ground" type="Sprite" parent="ParallaxBackground/Static/Gradient"]
+position = Vector2( 1105.62, -0.00280085 )
+scale = Vector2( 0.781819, 1 )
+texture = SubResource( 4 )
+
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.04, 1 )
+motion_mirroring = Vector2( 1250, 0 )
+
+[node name="Cloudgroup" type="Node2D" parent="ParallaxBackground/Clouds"]
+
+[node name="Cloud" type="Sprite" parent="ParallaxBackground/Clouds/Cloudgroup"]
+position = Vector2( 708, 100 )
+
+[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Clouds/Cloudgroup/Cloud"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.0
+margin_top = -20.0
+margin_right = 49.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cloud2" type="Sprite" parent="ParallaxBackground/Clouds/Cloudgroup"]
+position = Vector2( 186, 72 )
+
+[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Clouds/Cloudgroup/Cloud2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.0
+margin_top = -20.0
+margin_right = 49.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cloud3" type="Sprite" parent="ParallaxBackground/Clouds/Cloudgroup"]
+position = Vector2( 924, 50 )
+
+[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Clouds/Cloudgroup/Cloud3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.0
+margin_top = -20.0
+margin_right = 49.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Extras" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.98, 1 )
+motion_mirroring = Vector2( 1250, 0 )
+
+[node name="House2" type="Sprite" parent="ParallaxBackground/Extras"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 669, 495 )
+scale = Vector2( 0.9, 0.9 )
+
+[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Extras/House2"]
+margin_left = -97.0
+margin_top = -166.0
+margin_right = 97.0
+margin_bottom = 17.0
+color = Color( 0.8, 0.92549, 0.917647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="House4" type="Sprite" parent="ParallaxBackground/Extras"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 182, 495 )
+scale = Vector2( 0.9, 0.9 )
+
+[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Extras/House4"]
+margin_left = -97.0
+margin_top = -166.0
+margin_right = 97.0
+margin_bottom = 17.0
+color = Color( 0.8, 0.92549, 0.917647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Housing" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1250, 0 )
+
+[node name="PartyHouseStart" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( 0, 504 )
+
+[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Housing/PartyHouseStart"]
+margin_left = -159.0
+margin_top = -219.0
+margin_right = 159.0
+margin_bottom = 40.0
+color = Color( 0.827451, 0.717647, 0.482353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PartyHouseEnd" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( 1250, 504 )
+
+[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Housing/PartyHouseEnd"]
+margin_left = -159.0
+margin_top = -219.0
+margin_right = 159.0
+margin_bottom = 40.0
+color = Color( 0.827451, 0.717647, 0.482353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="House" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( 407, 493 )
+
+[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Housing/House"]
+margin_left = -97.0
+margin_top = -166.0
+margin_right = 97.0
+margin_bottom = 17.0
+color = Color( 0.8, 0.92549, 0.917647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="House3" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( 842, 495 )
+scale = Vector2( 0.95, 0.95 )
+
+[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Housing/House3"]
+margin_left = -97.0
+margin_top = -166.0
+margin_right = 97.0
+margin_bottom = 17.0
+color = Color( 0.8, 0.92549, 0.917647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1250, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Foreground"]
+position = Vector2( 420, 455 )
+
+[node name="PlaceholderPavement" type="ColorRect" parent="ParallaxBackground/Foreground/Sprite"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1961.5
+margin_top = 54.5
+margin_right = 2081.5
+margin_bottom = 89.5
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="ColorRect" parent="ParallaxBackground/Foreground/Sprite/PlaceholderPavement"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2021.5
+margin_top = -15.5
+margin_right = 2021.5
+margin_bottom = 130.5
+color = Color( 0.631373, 0.631373, 0.6, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Shadow" type="ColorRect" parent="ParallaxBackground/Foreground/Sprite/PlaceholderPavement/Base"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2021.5
+margin_top = -50.0
+margin_right = 2021.5
+margin_bottom = -41.0
+color = Color( 0.529412, 0.529412, 0.494118, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PlaceholderRoad" type="ColorRect" parent="ParallaxBackground/Foreground/Sprite"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1961.5
+margin_top = 89.5
+margin_right = 2081.5
+margin_bottom = 250.5
+color = Color( 0.223529, 0.223529, 0.231373, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Spawnpoint" type="Node2D" parent="."]
+position = Vector2( 0, 500 )
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 0, 300 )
+current = true
+limit_top = -900
+limit_bottom = 600
+script = ExtResource( 1 )
