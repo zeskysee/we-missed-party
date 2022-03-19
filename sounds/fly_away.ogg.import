@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fly_away.ogg-e761744b7e0ad03d29f33ed6eba6deec.oggstr"
+
+[deps]
+
+source_file="res://sounds/fly_away.ogg"
+dest_files=[ "res://.import/fly_away.ogg-e761744b7e0ad03d29f33ed6eba6deec.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

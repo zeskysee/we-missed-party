@@ -27,6 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="We Missed Party"
+run/main_scene="res://party_house.tscn"
 config/icon="res://icon.png"
 
 [autoload]

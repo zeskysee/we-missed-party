@@ -241,6 +241,7 @@ grow_vertical = 2
 theme = SubResource( 2 )
 text = "Hi."
 align = 1
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

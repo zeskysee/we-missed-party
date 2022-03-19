@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud_2.png-219e6a2a0d72140dd3c87fae10a470ef.stex"
+path="res://.import/ring_white.png-b798e16fb4314d7412825a8204f8d93d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cloud_2.png"
-dest_files=[ "res://.import/cloud_2.png-219e6a2a0d72140dd3c87fae10a470ef.stex" ]
+source_file="res://sprites/ring_white.png"
+dest_files=[ "res://.import/ring_white.png-b798e16fb4314d7412825a8204f8d93d.stex" ]
 
 [params]
 

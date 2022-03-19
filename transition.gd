@@ -10,6 +10,7 @@ signal completed(animation_name)
 
 # As usual, the AnimationPlayer to animate the transition.
 onready var animation_player = $AnimationPlayer
+onready var audio_player = $AudioStreamPlayer
 
 
 func _on_animation_finished(anim_name):
@@ -18,6 +19,7 @@ func _on_animation_finished(anim_name):
 
 func transition_in():
 	animation_player.play("in")
+	audio_player.play()
 
 
 func transition_out():
