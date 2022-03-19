@@ -96,6 +96,7 @@ position = Vector2( 512, 300 )
 
 [node name="Speech" parent="." instance=ExtResource( 3 )]
 position = Vector2( 335, 364 )
+is_skippable = true
 text = "It has been so long since I've been to a party..."
 
 [node name="TestDestroy" type="Timer" parent="."]

@@ -11,4 +11,6 @@ func _ready():
 
 
 func _on_test_destroy_timeout():
-	$Speech.destroy()
+	var speech = get_node_or_null("Speech")
+	if is_instance_valid(speech):
+		speech.destroy()
