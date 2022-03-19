@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://camera_spectate.gd" type="Script" id=1]
+[ext_resource path="res://actors/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://actors/npc.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -15,6 +17,11 @@ colors = PoolColorArray( 0.517647, 0.635294, 0.388235, 0, 0.65098, 0.623529, 0.5
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
+
+[sub_resource type="PhysicsMaterial" id=5]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 2657, 18 )
 
 [node name="Neighborhood" type="Node2D"]
 
@@ -244,12 +251,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="StaticBody2D" type="StaticBody2D" parent="ParallaxBackground"]
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/StaticBody2D"]
+position = Vector2( 1116, 530 )
+shape = SubResource( 6 )
+
 [node name="Spawnpoint" type="Node2D" parent="."]
 position = Vector2( 0, 500 )
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 0, 300 )
 current = true
-limit_top = -900
+limit_top = 0
 limit_bottom = 600
 script = ExtResource( 1 )
+speed = 500.0
+
+[node name="NPC" parent="." instance=ExtResource( 3 )]
+position = Vector2( 407, 510 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -3.05176e-05, 510 )
+scale = Vector2( 0.7, 0.7 )
+
+[connection signal="contact" from="NPC" to="Player" method="_on_NPC_contact"]
+[connection signal="contact_loss" from="NPC" to="Player" method="_on_NPC_contact_loss"]
