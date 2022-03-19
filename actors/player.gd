@@ -1,9 +1,12 @@
 extends Actor
 
+signal interact
+
 onready var interact_label = $InteractLabel
 onready var animated_sprite = $AnimatedSprite
 
 var in_contact: = false
+var is_interacting: = false
 
 func _physics_process(delta):
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
@@ -18,7 +21,12 @@ func _physics_process(delta):
 	.animate_character(direction)
 	
 	var face_back: bool = animated_sprite.flip_h
-	interact_label.visible = not face_back and in_contact
+	var can_interact = not face_back and in_contact and not is_interacting
+	interact_label.visible = can_interact
+	
+	if can_interact and Input.is_action_pressed("interact"):
+		is_interacting = true
+		emit_signal("interact")
 	
 
 func get_direction() -> Vector2:
@@ -33,3 +41,4 @@ func _on_NPC_contact():
 
 func _on_NPC_contact_loss():
 	in_contact = false
+	is_interacting = false
