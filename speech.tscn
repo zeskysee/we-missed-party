@@ -163,6 +163,20 @@ tracks/5/keys = {
 "points": PoolRealArray( 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.5 )
 }
+tracks/6/type = "audio"
+tracks/6/path = NodePath("ShowSound")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.2 )
+}
 
 [node name="Speech" type="Node2D"]
 script = ExtResource( 2 )
@@ -176,23 +190,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="Repositioning"]
-rect_scale = Vector2( 1e-05, 1e-05 )
+[node name="Control" type="MarginContainer" parent="Repositioning"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.5
+margin_top = -26.0
+margin_right = 32.5
+margin_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Bubble" type="NinePatchRect" parent="Repositioning/Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -39.5
-margin_top = -22.0
-margin_right = 39.5
-margin_bottom = 29.0
+margin_right = 65.0
+margin_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 5
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 64, 64 )
 patch_margin_left = 26
@@ -203,26 +222,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Repositioning/Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -4.0
-margin_top = -6.0
-margin_right = 4.0
-margin_bottom = 6.0
+[node name="MarginContainer" type="MarginContainer" parent="Repositioning/Control"]
+margin_right = 65.0
+margin_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/margin_right = 8
+custom_constants/margin_top = 16
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="Repositioning/Control/MarginContainer"]
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 57.0
+margin_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource( 2 )
-text = "hi."
+text = "Hi."
 align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
 anims/RESET = SubResource( 4 )
 anims/show = SubResource( 3 )
 
