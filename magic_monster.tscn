@@ -54,7 +54,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
@@ -64,7 +64,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/3/type = "bezier"
@@ -203,7 +203,6 @@ tracks/1/keys = {
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-rotation = -6.28319
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 5 )
 
@@ -223,7 +222,6 @@ explosiveness = 0.7
 process_material = SubResource( 3 )
 
 [node name="MonsterPlayer" type="AnimationPlayer" parent="."]
-reset_on_save = false
 anims/RESET = SubResource( 6 )
 anims/appear = SubResource( 4 )
 
