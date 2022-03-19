@@ -25,7 +25,6 @@ func _ready():
 func _physics_process(_delta):
 	floor_loop.global_position.x = player.global_position.x
 	# Update the position loop.
-	print(start_x - edge_x)
 	var viewport_half_x = get_viewport().size.x / 2
 	if player.global_position.x + viewport_half_x > start_x + edge_x:
 		start_x += edge_x
