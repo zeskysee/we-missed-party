@@ -10,7 +10,7 @@ export(bool) var show_on_ready = true
 # Time in seconds until this speech is completed.
 export(float) var time_to_finish = 1.5
 # Used to set the Label text.
-export(String) var text = "Hi."
+export(String, MULTILINE) var text = "Hi."
 
 # Keep track of characters shown since last tick.
 var characters_shown = 0
