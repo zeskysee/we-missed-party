@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Actor",
 "language": "GDScript",
 "path": "res://actors/actor.gd"
+}, {
+"base": "Reference",
+"class": "NPCData",
+"language": "GDScript",
+"path": "res://actors/npc_data.gd"
 } ]
 _global_script_class_icons={
-"Actor": ""
+"Actor": "",
+"NPCData": ""
 }
 
 [application]

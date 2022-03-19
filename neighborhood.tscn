@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://camera_spectate.gd" type="Script" id=1]
 [ext_resource path="res://actors/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/npc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://neighborhood.gd" type="Script" id=4]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -21,19 +22,20 @@ gradient = SubResource( 3 )
 [sub_resource type="PhysicsMaterial" id=5]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 2657, 18 )
+extents = Vector2( 3750, 16.5 )
 
 [node name="Neighborhood" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Static" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1250, 0 )
+motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Gradient" type="Sprite" parent="ParallaxBackground/Static"]
-position = Vector2( 482, -134 )
+position = Vector2( -765.784, -134.005 )
 rotation = 1.5708
-scale = Vector2( 0.436021, 4015.12 )
+scale = Vector2( 0.436021, 6510.69 )
 texture = SubResource( 2 )
 
 [node name="Ground" type="Sprite" parent="ParallaxBackground/Static/Gradient"]
@@ -43,7 +45,7 @@ texture = SubResource( 4 )
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.04, 1 )
-motion_mirroring = Vector2( 1250, 0 )
+motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Cloudgroup" type="Node2D" parent="ParallaxBackground/Clouds"]
 
@@ -97,7 +99,7 @@ __meta__ = {
 
 [node name="Extras" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.98, 1 )
-motion_mirroring = Vector2( 1250, 0 )
+motion_mirroring = Vector2( 2048, 0 )
 
 [node name="House2" type="Sprite" parent="ParallaxBackground/Extras"]
 modulate = Color( 1, 1, 1, 0.784314 )
@@ -130,7 +132,7 @@ __meta__ = {
 }
 
 [node name="Housing" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1250, 0 )
+motion_mirroring = Vector2( 2048, 0 )
 
 [node name="PartyHouseStart" type="Sprite" parent="ParallaxBackground/Housing"]
 position = Vector2( 0, 504 )
@@ -146,6 +148,7 @@ __meta__ = {
 }
 
 [node name="PartyHouseEnd" type="Sprite" parent="ParallaxBackground/Housing"]
+visible = false
 position = Vector2( 1250, 504 )
 
 [node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Housing/PartyHouseEnd"]
@@ -186,7 +189,7 @@ __meta__ = {
 }
 
 [node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1250, 0 )
+motion_mirroring = Vector2( 2048, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Foreground"]
 position = Vector2( 420, 455 )
@@ -251,33 +254,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ParallaxBackground"]
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( 2, 529 )
 collision_layer = 4
 collision_mask = 0
 physics_material_override = SubResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/StaticBody2D"]
-position = Vector2( 1116, 530 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource( 6 )
 
 [node name="Spawnpoint" type="Node2D" parent="."]
 position = Vector2( 0, 500 )
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 0, 300 )
+position = Vector2( -3.05176e-05, 510 )
 current = true
 limit_top = 0
 limit_bottom = 600
 script = ExtResource( 1 )
 speed = 500.0
+is_tracked = true
 
-[node name="NPC" parent="." instance=ExtResource( 3 )]
+[node name="NPCList" type="Node2D" parent="."]
+
+[node name="NPC" parent="NPCList" instance=ExtResource( 3 )]
 position = Vector2( 407, 510 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -3.05176e-05, 510 )
 scale = Vector2( 0.7, 0.7 )
+speed = Vector2( 450, 600 )
 
-[connection signal="contact" from="NPC" to="Player" method="_on_NPC_contact"]
-[connection signal="contact_loss" from="NPC" to="Player" method="_on_NPC_contact_loss"]
+[node name="CameraTracker" parent="Player" index="3"]
+remote_path = NodePath("../../Camera")
+
+[connection signal="contact" from="NPCList/NPC" to="Player" method="_on_NPC_contact"]
+[connection signal="contact_loss" from="NPCList/NPC" to="Player" method="_on_NPC_contact_loss"]
+
+[editable path="Player"]

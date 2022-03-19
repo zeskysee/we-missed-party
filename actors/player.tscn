@@ -8,14 +8,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": false,
-"name": "stand",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "stand",
 "speed": 5.0
 } ]
 
@@ -57,3 +57,7 @@ theme = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Press    ' spacebar '   to interact"
 align = 1
+
+[node name="CameraTracker" type="RemoteTransform2D" parent="."]
+update_rotation = false
+update_scale = false
