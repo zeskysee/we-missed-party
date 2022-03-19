@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://camera_spectate.gd" type="Script" id=1]
 [ext_resource path="res://actors/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://actors/npc.tscn" type="PackedScene" id=3]
 [ext_resource path="res://neighborhood.gd" type="Script" id=4]
 
 [sub_resource type="Gradient" id=1]
@@ -329,10 +328,6 @@ is_tracked = true
 
 [node name="NPCList" type="Node2D" parent="."]
 
-[node name="NPC" parent="NPCList" instance=ExtResource( 3 )]
-position = Vector2( 407, 510 )
-scale = Vector2( 0.7, 0.7 )
-
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -3.05176e-05, 510 )
 scale = Vector2( 0.7, 0.7 )
@@ -341,8 +336,4 @@ speed = Vector2( 450, 600 )
 [node name="CameraTracker" parent="Player" index="3"]
 remote_path = NodePath("../../Camera")
 
-[connection signal="contact" from="NPCList/NPC" to="Player" method="_on_NPC_contact"]
-[connection signal="contact_loss" from="NPCList/NPC" to="Player" method="_on_NPC_contact_loss"]
-
-[editable path="NPCList/NPC"]
 [editable path="Player"]

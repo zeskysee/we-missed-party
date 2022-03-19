@@ -17,11 +17,12 @@ onready var edge_x = foreground.motion_mirroring.x  # order is important
 
 
 func _ready():
-	pass
-	# Should Neighborhood spawn all NPCs baed on data?
+	# Initialize starting NPCs based on NPCData.
+	respawn()
+	respawn(false)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	floor_loop.global_position.x = player.global_position.x
 	# Update the position loop.
 	print(start_x - edge_x)
