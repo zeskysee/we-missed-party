@@ -886,6 +886,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
 [node name="PartyProps" type="Node2D" parent="Furniture"]
+visible = false
 
 [node name="Banner" type="Sprite" parent="Furniture/PartyProps"]
 position = Vector2( 512, 154 )
