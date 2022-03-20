@@ -9,6 +9,15 @@ onready var first_speech = $FirstSpeech
 onready var second_speech = $SecondSpeech
 onready var third_speech = $ThirdSpeech
 
+# Party props.
+onready var props = $Furniture/PartyProps
+onready var banner_label = $Furniture/PartyProps/Banner/Label
+onready var cake = $Furniture/PartyProps/CakePlate/Cake
+onready var cake_cut = $Furniture/PartyProps/CakePlate/CakeCut
+onready var popper_one = $Furniture/PartyProps/PartyPopper/AnimationPlayer
+onready var popper_two = $Furniture/PartyProps/PartyPopper2/AnimationPlayer
+onready var speaker_player = $Furniture/Speaker/SpeakerPlayer
+
 
 # Monster appears after first speech.
 func _on_first_speech_tree_exited():
@@ -35,10 +44,21 @@ func _on_camera_animation_finished(anim_name):
 
 func _on_house_animation_finished(_anim_name):
 	camera_player.play("pan_camera_back")
+	props.visible = true
+	speaker_player.play("play_music")
+	# TODO: Play music.
 
 
-func set_ending_text(_text):
-	pass
+func pop():
+	popper_one.play("pop")
+	popper_two.play("pop")
+	cake.visible = false
+	cake_cut.visible = true
+	banner_label.visible = true
+
+
+func set_ending_text(text):
+	banner_label.text = text
 
 
 func start_transition():
