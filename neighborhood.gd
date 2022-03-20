@@ -7,7 +7,10 @@ var npc_spots = [
 	NPCData.new(Vector2(407, 0)),
 	NPCData.new(Vector2(1920, 0))
 ]
-var npc_counter: = 1
+var spawn_npc_counter: = 1
+var follow_npc_counter: = 0
+var target_npc_name: = ""
+var target_npc_position: = Vector2.ZERO
 
 onready var camera = $Camera
 onready var floor_loop = $Floor
@@ -47,8 +50,8 @@ func respawn(ahead = true):
 	# Respawn NPCs to take on the new loop.
 	for data in npc_spots:
 		var npc = data.npc_scene.instance()
-		npc.id = str("npc_", npc_counter)
-		npc_counter += 1
+		npc.name = str("npc_", spawn_npc_counter)
+		spawn_npc_counter += 1
 		
 		var start = start_x if ahead else start_x - edge_x
 		npc_list.add_child(npc)
@@ -71,10 +74,27 @@ func _on_Player_invite(npc_id: String):
 	
 
 func _on_NPC_reply(npc_id: String, npc_position: Vector2):
+	target_npc_name = npc_id
+	target_npc_position = npc_position
+
 	var npcSpeech = speech_scene.instance()
-	npcSpeech.text = "Woah! I love party! Let's go."
+	npcSpeech.text = "Woah! I love party! Let's go!"
 	npcSpeech.is_skippable = true
 	npcSpeech.position.x = npc_position.x
 	npcSpeech.position.y = npc_position.y - 150
-	npcSpeech.destroy_callback = funcref(player, "ask_npc_follow")
+	npcSpeech.destroy_callback = funcref(self, "npc_follow_player")
 	add_child(npcSpeech)
+
+func npc_follow_player():
+	follow_npc_counter += 1
+	
+	player.ask_npc_follow()
+	var target_npc = npc_list.get_node(target_npc_name)
+	var target_position = player.position
+	
+	# move to next blank behind player
+	# to fix following slow down whole group issue
+	target_position.x -= (30) + follow_npc_counter * 120
+	target_npc.follow_player(target_position)
+	
+	

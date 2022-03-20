@@ -53,7 +53,6 @@ func interact_npc():
 
 func ask_npc_follow():
 	status = "wait_follow"
-	emit_signal("follow", npc_id_in_contact, position.x)
 
 func _on_NPC_contact(npc_id):
 	in_contact = true
