@@ -3,6 +3,7 @@ extends Area2D
 signal contact
 signal contact_loss
 signal reply
+signal moved_back
 
 export var is_moving_to_player_back: = false
 export var target_position: = Vector2.ZERO
@@ -17,6 +18,8 @@ func _physics_process(delta):
 		if current_body_position_x <= target_position.x:
 			npc_body.swap_direction()
 			is_moving_to_player_back = false
+			yield(get_tree().create_timer(0.5), "timeout")
+			emit_signal("moved_back")
 
 func _on_NPC_body_entered(body):
 	emit_signal("contact", name)

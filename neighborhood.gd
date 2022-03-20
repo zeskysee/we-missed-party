@@ -61,6 +61,7 @@ func respawn(ahead = true):
 		npc.connect("contact_loss", player, "_on_NPC_contact_loss")
 		player.connect("interact", npc, "_on_Player_interact")
 		npc.connect("reply", self, "_on_NPC_reply")
+		npc.connect("moved_back", self, "_on_NPC_moved_back")
 
 
 func _on_Player_invite(npc_id: String):
@@ -85,16 +86,18 @@ func _on_NPC_reply(npc_id: String, npc_position: Vector2):
 	npcSpeech.destroy_callback = funcref(self, "npc_follow_player")
 	add_child(npcSpeech)
 
+
 func npc_follow_player():
 	follow_npc_counter += 1
 	
-	player.ask_npc_follow()
 	var target_npc = npc_list.get_node(target_npc_name)
 	var target_position = player.position
 	
 	# move to next blank behind player
-	# to fix following slow down whole group issue
+	# to fix positioning issue
 	target_position.x -= (30) + follow_npc_counter * 120
 	target_npc.follow_player(target_position)
-	
-	
+
+
+func _on_NPC_moved_back():
+	player.available()
