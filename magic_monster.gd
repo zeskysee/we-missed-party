@@ -3,7 +3,7 @@ extends Node2D
 
 onready var hover_player = $HoverPlayer
 onready var monster_player = $MonsterPlayer
-onready var first_speech = $AnimatedSprite/FirstSpeech
+onready var first_speech = $FirstSpeech
 
 
 func _on_monster_player_animation_finished(anim_name):

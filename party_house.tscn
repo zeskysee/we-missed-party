@@ -871,22 +871,21 @@ scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 5 )
 
 [node name="Chair" type="Sprite" parent="Furniture"]
-position = Vector2( 565, 471 )
+position = Vector2( 599, 471 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
 [node name="Chair2" type="Sprite" parent="Furniture"]
-position = Vector2( 332, 471 )
+position = Vector2( 366, 471 )
 scale = Vector2( -2, 2 )
 texture = ExtResource( 10 )
 
 [node name="Table" type="Sprite" parent="Furniture"]
-position = Vector2( 451, 479 )
+position = Vector2( 485, 479 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
 [node name="PartyProps" type="Node2D" parent="Furniture"]
-visible = false
 
 [node name="Banner" type="Sprite" parent="Furniture/PartyProps"]
 position = Vector2( 512, 154 )
@@ -911,12 +910,12 @@ __meta__ = {
 }
 
 [node name="TableCloth" type="Sprite" parent="Furniture/PartyProps"]
-position = Vector2( 449, 472 )
+position = Vector2( 483, 472 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
 
 [node name="CakePlate" type="Sprite" parent="Furniture/PartyProps"]
-position = Vector2( 490, 448 )
+position = Vector2( 524, 448 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 18 )
 
@@ -930,7 +929,7 @@ position = Vector2( -0.5, -12 )
 texture = ExtResource( 17 )
 
 [node name="FruitBowl" type="Sprite" parent="Furniture/PartyProps"]
-position = Vector2( 399, 418 )
+position = Vector2( 433, 418 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
 
@@ -1015,15 +1014,30 @@ position = Vector2( 512, 300 )
 current = true
 
 [node name="MagicMonster" parent="." instance=ExtResource( 4 )]
-position = Vector2( 274, 496 )
+position = Vector2( 260, 468 )
+
+[node name="AnimatedSprite" parent="MagicMonster/Rescale" index="0"]
+frame = 0
+
+[node name="FirstSpeech" parent="MagicMonster" index="6"]
+position = Vector2( 53.9995, -42 )
+
+[node name="SecondSpeech" parent="MagicMonster" index="7"]
+position = Vector2( 53.9995, -50 )
+
+[node name="ThirdSpeech" parent="MagicMonster" index="8"]
+position = Vector2( 53.9995, -59 )
+
+[node name="FourthSpeech" parent="MagicMonster" index="9"]
+position = Vector2( 54, -59 )
 
 [connection signal="animation_finished" from="Outer/AnimationPlayer" to="." method="_on_house_animation_finished"]
 [connection signal="tree_exited" from="FirstSpeech" to="." method="_on_first_speech_tree_exited"]
 [connection signal="tree_exited" from="SecondSpeech" to="." method="_on_second_speech_tree_exited"]
 [connection signal="tree_exited" from="ThirdSpeech" to="FourthSpeech" method="play"]
-[connection signal="tree_exited" from="FourthSpeech" to="MagicMonster/AnimatedSprite/SecondSpeech" method="play"]
+[connection signal="tree_exited" from="FourthSpeech" to="MagicMonster/SecondSpeech" method="play"]
 [connection signal="animation_finished" from="CameraPlayer" to="." method="_on_camera_animation_finished"]
-[connection signal="tree_exited" from="MagicMonster/AnimatedSprite/FirstSpeech" to="." method="_on_monster_first_tree_exited"]
-[connection signal="tree_exited" from="MagicMonster/AnimatedSprite/FourthSpeech" to="." method="start_transition"]
+[connection signal="tree_exited" from="MagicMonster/FirstSpeech" to="." method="_on_monster_first_tree_exited"]
+[connection signal="tree_exited" from="MagicMonster/FourthSpeech" to="." method="start_transition"]
 
 [editable path="MagicMonster"]

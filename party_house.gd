@@ -119,7 +119,7 @@ func rearrange_for_party():
 	camera_player.disconnect("animation_finished", self,
 			"_on_camera_animation_finished")
 	var monster_first = get_node_or_null(
-			"MagicMonster/AnimatedSprite/FirstSpeech")
+			"MagicMonster/FirstSpeech")
 	if monster_first:
 		monster_first.disconnect("tree_exited", self,
 				"_on_monster_first_tree_exited")
@@ -133,13 +133,13 @@ func rearrange_for_party():
 	if is_instance_valid(third_speech):
 		third_speech.disconnect("tree_exited", fourth_speech, "play")
 	var monster_second = get_node_or_null(
-			"MagicMonster/AnimatedSprite/SecondSpeech")
+			"MagicMonster/SecondSpeech")
 	if fourth_speech and monster_second:
 		fourth_speech.disconnect("tree_exited", monster_second, "play")
 	var monster_third = get_node_or_null(
-			"MagicMonster/AnimatedSprite/ThirdSpeech")
+			"MagicMonster/ThirdSpeech")
 	var monster_fourth = get_node_or_null(
-			"MagicMonster/AnimatedSprite/FourthSpeech")
+			"MagicMonster/FourthSpeech")
 	if monster_third and monster_fourth:
 		monster_third.disconnect("tree_exited", monster_fourth, "play")
 	if monster_fourth:
