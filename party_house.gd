@@ -1,7 +1,8 @@
 extends Node2D
 
 
-const NPC_SPRITE = preload("res://sprites/npc_stand.png")
+const DANCING_NPC = preload("res://dancing_npc.tscn")
+
 
 # If true, NPCs spawn left side of the room in ending. False means right side.
 # This will be alternated on every spawn.
@@ -119,20 +120,19 @@ func set_ending_text(text):
 func spawn_npcs():
 	for i in range(Global.total_number_of_npc):
 		# 1. Get the resource or sprite of the npc to spawn.
-		var npc_sprite = Sprite.new()
-		npc_sprite.texture = NPC_SPRITE
+		var dancing_npc = DANCING_NPC.instance()
 		# 2. Spawn them at any x-position from 0 to 1024. y-position ~492.
-		npc_spawns.add_child(npc_sprite)
+		npc_spawns.add_child(dancing_npc, true)
 		var index = randi() % random_scale_y.size()
 		var x_location = rand_range(100, 462) if spawn_left else \
 				rand_range(562, 924)
-		npc_sprite.z_index = random_scale_y.size() - index
-		npc_sprite.scale = Vector2(random_scale_y[index][0],
+		dancing_npc.sprite.z_index = random_scale_y.size() - index
+		dancing_npc.sprite.scale = Vector2(random_scale_y[index][0],
 				random_scale_y[index][0])
-		npc_sprite.global_position = Vector2(x_location,
+		dancing_npc.global_position = Vector2(x_location,
 				random_scale_y[index][1])
-		if npc_sprite.global_position.x > 512:
-			npc_sprite.scale.x *= -1
+		if dancing_npc.global_position.x > 512:
+			dancing_npc.scale.x *= -1
 		spawn_left = !spawn_left
 
 
