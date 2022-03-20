@@ -44,7 +44,7 @@ func _physics_process(_delta):
 func respawn(ahead = true):
 	# Remove all NPCs who were left behind.
 	for npc in npc_list.get_children():
-		if npc.global_position.distance_to(player.global_position) > edge_x:
+		if npc.npc_body.global_position.distance_to(player.global_position) > edge_x:
 			npc.queue_free()
 			
 	# Respawn NPCs to take on the new loop.
