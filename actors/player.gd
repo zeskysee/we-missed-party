@@ -13,16 +13,17 @@ onready var collision_shape = $CollisionShape2D
 # idle | interacting | wait_reply | wait_follow
 var status = "idle"
 var in_contact: = false
+var in_conversation = false
 var npc_id_in_contact: = ""
 
 
 func _physics_process(delta):
-	
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
 		
 	var direction: = .get_input_direction()
 	
-	_velocity = .calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
+	_velocity = Vector2.ZERO if in_conversation else .calculate_move_velocity(
+			_velocity, direction, speed, is_jump_interrupted)
 	
 	# engine automatically move character in move_and_slide function
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
@@ -40,6 +41,7 @@ func _physics_process(delta):
 
 func _invite(can_interact: bool):
 	if can_interact and Input.is_action_pressed("interact"):
+		in_conversation = true
 		status = "interacting"
 		emit_signal("invite", npc_id_in_contact)
 		
@@ -48,6 +50,7 @@ func interact_npc():
 	emit_signal("interact", npc_id_in_contact)
 
 func available():
+	in_conversation = false
 	status = "idle"
 
 func _on_NPC_contact(npc_id):

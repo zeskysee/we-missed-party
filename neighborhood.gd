@@ -59,7 +59,7 @@ func respawn(ahead = true):
 		npc.scale = data.scale
 		npc.connect("contact", player, "_on_NPC_contact")
 		npc.connect("contact_loss", player, "_on_NPC_contact_loss")
-		player.connect("interact", npc, "_on_Player_interact")
+		player.connect("interact", npc, "_on_Player_interact", [player])
 		npc.connect("reply", self, "_on_NPC_reply")
 		npc.connect("moved_back", self, "_on_NPC_moved_back")
 
