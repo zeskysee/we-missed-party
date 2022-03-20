@@ -3,9 +3,16 @@ extends Area2D
 signal contact
 signal contact_loss
 
+export var id: = "npc_1"
 
 func _on_NPC_body_entered(body):
-	emit_signal("contact")
+	emit_signal("contact", id)
 
 func _on_NPC_body_exited(body):
 	emit_signal("contact_loss")
+
+func _on_Player_interact(npc_id: String):
+	if npc_id == id:
+		print(id)
+
+

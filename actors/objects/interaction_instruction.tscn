@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/minimal_3x5.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 114.75, 10.75 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 4 )
+Label/colors/font_color = Color( 0.411765, 0.545098, 0.584314, 1 )
+
+[node name="InteractionInstruction" type="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.25 )
+shape = SubResource( 1 )
+
+[node name="InteractLabel" type="Label" parent="."]
+margin_left = -106.0
+margin_top = -5.0
+margin_right = 108.0
+margin_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Press    ' spacebar '   to interact"
+align = 1

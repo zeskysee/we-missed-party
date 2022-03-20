@@ -6,10 +6,12 @@ var npc_spots = [
 	NPCData.new(Vector2(407, 0)),
 	NPCData.new(Vector2(1920, 0))
 ]
+var npc_counter: = 1
 
 onready var camera = $Camera
 onready var floor_loop = $Floor
 onready var foreground = $ParallaxBackground/Foreground
+onready var interaction_instruction = $InteractionInstruction
 onready var npc_list = $NPCList
 onready var player = $Player
 onready var start_x = 0
@@ -40,12 +42,17 @@ func respawn(ahead = true):
 	for npc in npc_list.get_children():
 		if npc.global_position.distance_to(player.global_position) > edge_x:
 			npc.queue_free()
+			
 	# Respawn NPCs to take on the new loop.
 	for data in npc_spots:
 		var npc = data.npc_scene.instance()
+		npc.id = str("npc_", npc_counter)
+		npc_counter += 1
+		
 		var start = start_x if ahead else start_x - edge_x
 		npc_list.add_child(npc)
 		npc.global_position = Vector2(start, 510) + data.parallax_offset
 		npc.scale = data.scale
 		npc.connect("contact", player, "_on_NPC_contact")
 		npc.connect("contact_loss", player, "_on_NPC_contact_loss")
+		player.connect("interact", npc, "_on_Player_interact")

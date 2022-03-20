@@ -1,12 +1,18 @@
 extends Actor
 
 signal interact
+signal move_label
+signal follow
 
-onready var interact_label = $InteractLabel
+export var label_height = 50.0
+
 onready var animated_sprite = $AnimatedSprite
+onready var collision_shape = $CollisionShape2D
 
 var in_contact: = false
 var is_interacting: = false
+var npc_id_in_contact: = ""
+
 
 func _physics_process(delta):
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
@@ -22,11 +28,13 @@ func _physics_process(delta):
 	
 	var face_back: bool = animated_sprite.flip_h
 	var can_interact = not face_back and in_contact and not is_interacting
-	interact_label.visible = can_interact
+	
+	emit_signal("move_label", _velocity, position.y - collision_shape.get_shape().height - label_height, can_interact)
 	
 	if can_interact and Input.is_action_pressed("interact"):
 		is_interacting = true
-		emit_signal("interact")
+		emit_signal("interact", npc_id_in_contact)
+		emit_signal("follow", npc_id_in_contact, position.x)
 	
 
 func get_direction() -> Vector2:
@@ -36,9 +44,12 @@ func get_direction() -> Vector2:
 	)
 
 
-func _on_NPC_contact():
+func _on_NPC_contact(npc_id):
 	in_contact = true
+	npc_id_in_contact = npc_id
 
 func _on_NPC_contact_loss():
 	in_contact = false
 	is_interacting = false
+	npc_id_in_contact = ""
+
