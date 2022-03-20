@@ -3,6 +3,8 @@ class_name Actor
 
 const FLOOR_NORMAL = Vector2.UP
 
+onready var sprite: = $AnimatedSprite
+
 export var speed: = Vector2(500.0, 900.0)
 export var gravity: = 4000.0
 
@@ -34,9 +36,16 @@ func calculate_move_velocity(
 
 func animate_character(direction: Vector2) -> void:
 	if direction.x == 0:
-		$AnimatedSprite.animation = "stand"
-		$AnimatedSprite.stop()
+		stand()
 	else:
-		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.flip_h = direction.x < 0
-		$AnimatedSprite.play()
+		walk(direction)
+
+func stand() -> void:
+	sprite.animation = "stand"
+	sprite.flip_h = false
+	sprite.stop()
+	
+func walk(direction: Vector2) -> void:
+	sprite.animation = "walk"
+	sprite.flip_h = direction.x < 0
+	sprite.play()
