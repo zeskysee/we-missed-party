@@ -96,7 +96,7 @@ func play_ending():
 	speaker_player.play("play_music")
 	pop()
 	player_player.play("dance")
-	magic_monster.global_position.y = 250
+	magic_monster.global_position.y = 320
 	$Backwall.color = Color(0.71, 0.67, 0.71, 1.0)
 	$Ceiling.color = Color(0.57, 0.53, 0.56, 1.0)
 	set_ending_text(Global.get_ending_text())

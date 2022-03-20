@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://camera_spectate.gd" type="Script" id=1]
 [ext_resource path="res://actors/player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://sprites/ui_human.png" type="Texture" id=14]
 [ext_resource path="res://sprites/ring_white.png" type="Texture" id=15]
 [ext_resource path="res://theme_basic.tres" type="Theme" id=16]
+[ext_resource path="res://sprites/balloon_1.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -103,8 +104,8 @@ gradient = SubResource( 1 )
 width = 3840
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0.202186, 0.688525 )
-colors = PoolColorArray( 0.517647, 0.635294, 0.388235, 0, 0.65098, 0.623529, 0.552941, 1 )
+offsets = PoolRealArray( 0.202186, 0.688525, 1 )
+colors = PoolColorArray( 0.517647, 0.635294, 0.388235, 0, 0.760784, 0.760784, 0.760784, 1, 0.877014, 0.867341, 0.842467, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
@@ -299,6 +300,30 @@ texture = ExtResource( 11 )
 position = Vector2( 343, 335 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 12 )
+
+[node name="BalloonLeft1" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( -273, 465.451 )
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 17 )
+
+[node name="BalloonLeft2" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( 292, 455.451 )
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 17 )
+offset = Vector2( -136.364, 136.363 )
+
+[node name="BalloonRight1" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( 127, 455.451 )
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 17 )
+offset = Vector2( -136.364, 136.363 )
+flip_h = true
+
+[node name="BalloonRight2" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( -114, 468.451 )
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 17 )
+flip_h = true
 
 [node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 3840, 0 )
