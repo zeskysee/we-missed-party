@@ -4,6 +4,8 @@ extends Node2D
 const DANCING_NPC = preload("res://dancing_npc.tscn")
 
 
+# Becomes true if is transitioning to the neighborhood.
+var is_transitioning = false
 # If true, NPCs spawn left side of the room in ending. False means right side.
 # This will be alternated on every spawn.
 var spawn_left = true
@@ -36,10 +38,18 @@ func _ready():
 	pass
 
 func _input(event):
-	if Global.is_ending and (event.is_action_pressed("interact") or \
+	if Global.is_ending and not is_transitioning and \
+			(event.is_action_pressed("interact") or \
 			event.is_action_pressed("jump")):
+		is_transitioning = true
 		Transition.connect("completed", self, "_on_return_to_main_menu")
 		Transition.transition_in()
+	elif not Global.is_ending and event.is_action_pressed("skip_cutscene") \
+			and not is_transitioning:
+		rearrange_for_party()
+		start_transition()
+		if not MusicPlayer.street_player.playing:
+			MusicPlayer.play_street_song()
 
 
 # Monster appears after first speech.
@@ -102,25 +112,42 @@ func pop():
 	banner_label.visible = true
 
 
+# Sorry for the if checks, rushing to complete. Checks are there because
+# player can skip cutscene at any time and I need to destroy the signals or
+# Godot engine will throw error, which is not very nice.
 func rearrange_for_party():
-	var monster_first = $MagicMonster/AnimatedSprite/FirstSpeech
-	monster_first.disconnect("tree_exited", self,
-			"_on_monster_first_tree_exited")
-	first_speech.disconnect("tree_exited", self,
-			"_on_first_speech_tree_exited")
-	second_speech.disconnect("tree_exited", self,
-			"_on_second_speech_tree_exited")
-	var fourth_speech = $FourthSpeech
-	third_speech.disconnect("tree_exited", fourth_speech, "play")
-	var monster_second = $MagicMonster/AnimatedSprite/SecondSpeech
-	fourth_speech.disconnect("tree_exited", monster_second, "play")
-	var monster_third = $MagicMonster/AnimatedSprite/ThirdSpeech
-	var monster_fourth = $MagicMonster/AnimatedSprite/FourthSpeech
-	monster_third.disconnect("tree_exited", monster_fourth, "play")
-	monster_fourth.disconnect("tree_exited", self, "start_transition")
+	camera_player.disconnect("animation_finished", self,
+			"_on_camera_animation_finished")
+	var monster_first = get_node_or_null(
+			"MagicMonster/AnimatedSprite/FirstSpeech")
+	if monster_first:
+		monster_first.disconnect("tree_exited", self,
+				"_on_monster_first_tree_exited")
+	if is_instance_valid(first_speech):
+		first_speech.disconnect("tree_exited", self,
+				"_on_first_speech_tree_exited")
+	if is_instance_valid(second_speech):
+		second_speech.disconnect("tree_exited", self,
+				"_on_second_speech_tree_exited")
+	var fourth_speech = get_node_or_null("FourthSpeech")
+	if third_speech:
+		third_speech.disconnect("tree_exited", fourth_speech, "play")
+	var monster_second = get_node_or_null(
+			"MagicMonster/AnimatedSprite/SecondSpeech")
+	if fourth_speech and monster_second:
+		fourth_speech.disconnect("tree_exited", monster_second, "play")
+	var monster_third = get_node_or_null(
+			"MagicMonster/AnimatedSprite/ThirdSpeech")
+	var monster_fourth = get_node_or_null(
+			"MagicMonster/AnimatedSprite/FourthSpeech")
+	if monster_third and monster_fourth:
+		monster_third.disconnect("tree_exited", monster_fourth, "play")
+	if monster_fourth:
+		monster_fourth.disconnect("tree_exited", self, "start_transition")
 	for node in [first_speech, second_speech, third_speech, fourth_speech,
 			monster_first, monster_second, monster_third, monster_fourth]:
-		node.queue_free()
+		if is_instance_valid(node):
+			node.queue_free()
 
 
 func set_ending_text(text):
@@ -148,9 +175,11 @@ func spawn_npcs():
 
 
 func start_transition():
-	Transition.transition_in()
-	# warning-ignore:return_value_discarded
-	Transition.connect("completed", self, "start_game")
+	if not is_transitioning:
+		is_transitioning = true
+		# warning-ignore:return_value_discarded
+		Transition.connect("completed", self, "start_game")
+		Transition.transition_in()
 
 
 func start_game(transition_name):
