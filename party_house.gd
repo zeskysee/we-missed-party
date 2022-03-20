@@ -35,6 +35,12 @@ func _ready():
 		play_ending()
 	pass
 
+func _input(event):
+	if Global.is_ending and (event.is_action_pressed("interact") or \
+			event.is_action_pressed("jump")):
+		Transition.connect("completed", self, "_on_return_to_main_menu")
+		Transition.transition_in()
+
 
 # Monster appears after first speech.
 func _on_first_speech_tree_exited():
@@ -65,6 +71,11 @@ func _on_house_animation_finished(_anim_name):
 	#props.visible = true
 	speaker_player.play("play_music")
 	MusicPlayer.play_street_song()
+
+
+func _on_return_to_main_menu(anim_name):
+	if anim_name == "in":
+		get_tree().change_scene("res://opening.tscn")
 
 
 # Rearanges the scene for the ending.
