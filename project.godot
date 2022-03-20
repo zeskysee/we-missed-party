@@ -35,6 +35,7 @@ config/windows_native_icon="res://icon.ico"
 
 Transition="*res://transition.tscn"
 MusicPlayer="*res://music_player.tscn"
+Global="*res://global.gd"
 
 [display]
 

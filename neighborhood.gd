@@ -106,6 +106,7 @@ func _on_NPC_reply(npc_id: String, npc_position: Vector2):
 
 func npc_follow_player():
 	follow_npc_counter += 1
+	Global.total_number_of_npc += 1
 	
 	var target_npc = npc_list.get_node(target_npc_name)
 	var target_position = player.position
@@ -121,4 +122,5 @@ func _on_NPC_moved_back():
 
 
 func _on_Player_enter_party_house():
+	Global.is_ending = true
 	get_tree().change_scene("res://party_house.tscn")

@@ -21,8 +21,8 @@ onready var speaker_player = $Furniture/Speaker/SpeakerPlayer
 
 func _ready():
 	# Get ending state from global, if true, then play ending.
-	#if true:
-	#	play_ending()
+	if Global.is_ending:
+		play_ending()
 	pass
 
 
