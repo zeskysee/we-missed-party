@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://party_house.gd" type="Script" id=1]
 [ext_resource path="res://sprites/light_window.png" type="Texture" id=2]
@@ -23,6 +23,11 @@
 [ext_resource path="res://sprites/balloon_blue.png" type="Texture" id=21]
 [ext_resource path="res://sprites/balloon_yellow.png" type="Texture" id=22]
 [ext_resource path="res://party_popper.tscn" type="PackedScene" id=23]
+[ext_resource path="res://sprites/house_2.png" type="Texture" id=24]
+[ext_resource path="res://sprites/tree_1.png" type="Texture" id=25]
+[ext_resource path="res://sprites/house_1.png" type="Texture" id=26]
+[ext_resource path="res://sprites/cloud_1.png" type="Texture" id=27]
+[ext_resource path="res://sprites/cloud_2.png" type="Texture" id=28]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -148,6 +153,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Color( 0.533333, 0.568627, 0.568627, 1 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("House:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "change"
@@ -272,6 +289,18 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0.533333, 0.568627, 0.568627, 1 ), Color( 0.568627, 0.533333, 0.564706, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("House:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -606,18 +635,25 @@ position = Vector2( 1105.62, -0.00280085 )
 scale = Vector2( 0.781819, 1 )
 texture = SubResource( 4 )
 
-[node name="House" type="Sprite" parent="Outer"]
-position = Vector2( 501, 495 )
+[node name="Cloud2" type="Sprite" parent="Outer"]
+position = Vector2( 950, 54 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
 
-[node name="Placeholder" type="ColorRect" parent="Outer/House"]
-margin_left = -97.0
-margin_top = -166.0
-margin_right = 97.0
-margin_bottom = 17.0
-color = Color( 0.8, 0.92549, 0.917647, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Cloud1" type="Sprite" parent="Outer"]
+position = Vector2( 192, 60 )
+texture = ExtResource( 27 )
+
+[node name="House" type="Sprite" parent="Outer"]
+position = Vector2( 501, 359 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 26 )
+
+[node name="House2" type="Sprite" parent="Outer"]
+modulate = Color( 1, 1, 1, 0.745098 )
+position = Vector2( 30, 434 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 24 )
 
 [node name="PartyHouse" type="Sprite" parent="Outer"]
 modulate = Color( 1, 1, 1, 0 )
@@ -632,6 +668,11 @@ color = Color( 0.827451, 0.717647, 0.482353, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tree1" type="Sprite" parent="Outer"]
+position = Vector2( 852, 337 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 25 )
 
 [node name="Road" type="Sprite" parent="Outer"]
 position = Vector2( 420, 455 )
