@@ -45,9 +45,9 @@ func _invite(can_interact: bool):
 		status = "interacting"
 		emit_signal("invite", npc_id_in_contact)
 		
-func interact_npc():
+func interact_npc(carry_over_id):
 	status = "wait_reply"
-	emit_signal("interact", npc_id_in_contact)
+	emit_signal("interact", carry_over_id)
 
 func available():
 	in_conversation = false

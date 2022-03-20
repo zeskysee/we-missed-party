@@ -70,7 +70,7 @@ func _on_Player_invite(npc_id: String):
 	playerSpeech.is_skippable = true
 	playerSpeech.position.x = player.position.x
 	playerSpeech.position.y = player.position.y - 150
-	playerSpeech.destroy_callback = funcref(player, "interact_npc")
+	playerSpeech.connect("tree_exited", player, "interact_npc", [npc_id])
 	add_child(playerSpeech)
 	
 
