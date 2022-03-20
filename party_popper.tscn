@@ -258,7 +258,6 @@ __meta__ = {
 visible = false
 position = Vector2( 5, 2 )
 rotation = -2.20056
-scale = Vector2( 1, 1 )
 mode = 1
 gravity_scale = 10.0
 
@@ -313,7 +312,7 @@ offset = Vector2( 34.3324, -9.9745 )
 
 [node name="PartyPopper" type="Sprite" parent="Capsule"]
 position = Vector2( -0.457321, -2.98384 )
-rotation = -0.877254
+rotation = -0.877255
 texture = ExtResource( 4 )
 offset = Vector2( -35.201, -14.8767 )
 

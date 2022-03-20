@@ -13,7 +13,7 @@ animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 4.5
 } ]
 
 [sub_resource type="Gradient" id=1]
@@ -210,7 +210,7 @@ scale = Vector2( 0.08, 0.08 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Rescale"]
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 5 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="."]
