@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://sprites/light_window.png" type="Texture" id=2]
 [ext_resource path="res://opening.gd" type="Script" id=3]
@@ -129,11 +129,11 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 2, 4 )
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=21]
 font_data = ExtResource( 19 )
 
 [sub_resource type="Theme" id=17]
-default_font = SubResource( 4 )
+default_font = SubResource( 21 )
 Label/colors/font_color = Color( 0.411765, 0.545098, 0.584314, 1 )
 
 [sub_resource type="DynamicFont" id=18]
@@ -145,293 +145,11 @@ size = 100
 font_data = ExtResource( 19 )
 
 [sub_resource type="DynamicFont" id=20]
-size = 30
-font_data = ExtResource( 19 )
-
-[sub_resource type="DynamicFont" id=26]
-font_data = ExtResource( 19 )
-
-[sub_resource type="Theme" id=27]
-default_font = SubResource( 26 )
-Label/colors/font_color = Color( 0.411765, 0.545098, 0.584314, 1 )
-
-[sub_resource type="DynamicFont" id=28]
-size = 40
-font_data = ExtResource( 19 )
-
-[sub_resource type="DynamicFont" id=29]
-size = 100
-font_data = ExtResource( 19 )
-
-[sub_resource type="DynamicFont" id=30]
 size = 20
 font_data = ExtResource( 19 )
 
 [node name="PartyHouse" type="Node2D"]
 script = ExtResource( 3 )
-
-[node name="OldVersion" type="Node2D" parent="."]
-visible = false
-
-[node name="Backwall" type="ColorRect" parent="OldVersion"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -52.0
-margin_top = 63.0
-margin_right = 1078.0
-margin_bottom = 531.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 565, 234 )
-color = Color( 0.67451, 0.694118, 0.713726, 1 )
-
-[node name="Floor2" type="ColorRect" parent="OldVersion"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -52.0
-margin_top = 491.0
-margin_right = 1078.0
-margin_bottom = 633.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 565, 69 )
-color = Color( 0.572549, 0.533333, 0.494118, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Floor" type="ColorRect" parent="OldVersion"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -52.0
-margin_top = 495.0
-margin_right = 1078.0
-margin_bottom = 633.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 565, 69 )
-color = Color( 0.639216, 0.592157, 0.54902, 1 )
-
-[node name="Ceiling" type="ColorRect" parent="OldVersion"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -52.0
-margin_top = -42.0
-margin_right = 1078.0
-margin_bottom = 96.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 565, 69 )
-color = Color( 0.533333, 0.568627, 0.568627, 1 )
-
-[node name="Window" type="Node2D" parent="OldVersion"]
-position = Vector2( -28, 101 )
-
-[node name="ColorRect" type="ColorRect" parent="OldVersion/Window"]
-visible = false
-margin_left = 809.0
-margin_top = 238.0
-margin_right = 849.0
-margin_bottom = 278.0
-color = Color( 0.921569, 0.921569, 0.854902, 1 )
-
-[node name="ColorRect2" type="ColorRect" parent="OldVersion/Window"]
-visible = false
-margin_left = 854.0
-margin_top = 238.0
-margin_right = 894.0
-margin_bottom = 278.0
-color = Color( 0.921569, 0.921569, 0.854902, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect3" type="ColorRect" parent="OldVersion/Window"]
-visible = false
-margin_left = 854.0
-margin_top = 192.0
-margin_right = 894.0
-margin_bottom = 232.0
-color = Color( 0.921569, 0.921569, 0.854902, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect4" type="ColorRect" parent="OldVersion/Window"]
-visible = false
-margin_left = 809.0
-margin_top = 192.0
-margin_right = 849.0
-margin_bottom = 232.0
-color = Color( 0.921569, 0.921569, 0.854902, 1 )
-
-[node name="Light2D" type="Light2D" parent="OldVersion/Window"]
-visible = false
-position = Vector2( 688.875, 340.5 )
-scale = Vector2( 0.859863, 0.634766 )
-texture = ExtResource( 2 )
-energy = 0.5
-
-[node name="Furniture" type="Node2D" parent="OldVersion"]
-
-[node name="Speaker" type="Sprite" parent="OldVersion/Furniture"]
-visible = false
-position = Vector2( 202, 458 )
-texture = ExtResource( 15 )
-
-[node name="SpeakerPlayer" type="AnimationPlayer" parent="OldVersion/Furniture/Speaker"]
-anims/RESET = SubResource( 13 )
-anims/play_music = SubResource( 14 )
-
-[node name="RingWhite" type="Sprite" parent="OldVersion/Furniture/Speaker"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 0, -19 )
-scale = Vector2( 1e-05, 1e-05 )
-texture = ExtResource( 5 )
-
-[node name="Chair" type="Sprite" parent="OldVersion/Furniture"]
-visible = false
-position = Vector2( 565, 471 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 10 )
-
-[node name="Chair2" type="Sprite" parent="OldVersion/Furniture"]
-visible = false
-position = Vector2( 332, 471 )
-scale = Vector2( -2, 2 )
-texture = ExtResource( 10 )
-
-[node name="Table" type="Sprite" parent="OldVersion/Furniture"]
-visible = false
-position = Vector2( 451, 479 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 11 )
-
-[node name="PartyProps" type="Node2D" parent="OldVersion/Furniture"]
-visible = false
-
-[node name="Banner" type="Sprite" parent="OldVersion/Furniture/PartyProps"]
-position = Vector2( 512, 154 )
-texture = ExtResource( 13 )
-
-[node name="Label" type="Label" parent="OldVersion/Furniture/PartyProps/Banner"]
-visible = false
-margin_left = -175.0
-margin_top = -31.0
-margin_right = 175.0
-margin_bottom = 95.0
-grow_horizontal = 2
-grow_vertical = 2
-custom_colors/font_color = Color( 0.937255, 0.858824, 0.0588235, 1 )
-custom_fonts/font = SubResource( 12 )
-text = "Wholesome
-Party"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TableCloth" type="Sprite" parent="OldVersion/Furniture/PartyProps"]
-position = Vector2( 449, 472 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 12 )
-
-[node name="CakePlate" type="Sprite" parent="OldVersion/Furniture/PartyProps"]
-position = Vector2( 490, 448 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 18 )
-
-[node name="Cake" type="Sprite" parent="OldVersion/Furniture/PartyProps/CakePlate"]
-position = Vector2( -0.5, -12 )
-texture = ExtResource( 16 )
-
-[node name="CakeCut" type="Sprite" parent="OldVersion/Furniture/PartyProps/CakePlate"]
-visible = false
-position = Vector2( -0.5, -12 )
-texture = ExtResource( 17 )
-
-[node name="FruitBowl" type="Sprite" parent="OldVersion/Furniture/PartyProps"]
-position = Vector2( 399, 418 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 14 )
-
-[node name="Balloons" type="Node2D" parent="OldVersion/Furniture/PartyProps"]
-
-[node name="BalloonYellow" type="Sprite" parent="OldVersion/Furniture/PartyProps/Balloons"]
-position = Vector2( 13, 369 )
-texture = ExtResource( 22 )
-
-[node name="BalloonRed" type="Sprite" parent="OldVersion/Furniture/PartyProps/Balloons"]
-position = Vector2( 41, 399 )
-texture = ExtResource( 20 )
-
-[node name="BalloonBlue" type="Sprite" parent="OldVersion/Furniture/PartyProps/Balloons"]
-position = Vector2( 944, 393 )
-texture = ExtResource( 21 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="OldVersion/Furniture/PartyProps/Balloons"]
-autoplay = "hover"
-anims/RESET = SubResource( 15 )
-anims/hover = SubResource( 16 )
-
-[node name="PartyPopper" parent="OldVersion/Furniture/PartyProps" instance=ExtResource( 23 )]
-position = Vector2( 267, 88 )
-
-[node name="PartyPopper2" parent="OldVersion/Furniture/PartyProps" instance=ExtResource( 23 )]
-position = Vector2( 741, 88 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-
-[node name="Camera2D" type="Camera2D" parent="OldVersion"]
-position = Vector2( 512, 300 )
-
-[node name="Instruction" type="Label" parent="OldVersion"]
-margin_left = 280.0
-margin_top = 348.0
-margin_right = 750.0
-margin_bottom = 378.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource( 17 )
-custom_colors/font_color = Color( 0.309804, 0.32549, 0.32549, 1 )
-custom_fonts/font = SubResource( 18 )
-text = "Press    ' spacebar '   to start"
-align = 1
-
-[node name="GameTitle" type="Label" parent="OldVersion"]
-margin_left = 87.0
-margin_top = 232.0
-margin_right = 957.0
-margin_bottom = 322.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource( 17 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 19 )
-text = "we missed party"
-align = 1
-
-[node name="Credit" type="Label" parent="OldVersion"]
-margin_left = 279.0
-margin_top = 533.0
-margin_right = 749.0
-margin_bottom = 563.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource( 17 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 20 )
-text = "Credits:    z_zs    |   Lemoney    |    zesky"
-align = 1
 
 [node name="Backwall" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -461,6 +179,21 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 565, 69 )
 color = Color( 0, 0, 0, 1 )
 
+[node name="Floor" type="ColorRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.0
+margin_top = 495.0
+margin_right = 1078.0
+margin_bottom = 633.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 565, 69 )
+color = Color( 0, 0, 0, 1 )
+
 [node name="Ceiling" type="ColorRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -475,6 +208,167 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 565, 69 )
 color = Color( 0, 0, 0, 1 )
 
+[node name="Window" type="Node2D" parent="."]
+visible = false
+position = Vector2( -28, 101 )
+
+[node name="ColorRect" type="ColorRect" parent="Window"]
+visible = false
+margin_left = 809.0
+margin_top = 238.0
+margin_right = 849.0
+margin_bottom = 278.0
+color = Color( 0.921569, 0.921569, 0.854902, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Window"]
+visible = false
+margin_left = 854.0
+margin_top = 238.0
+margin_right = 894.0
+margin_bottom = 278.0
+color = Color( 0.921569, 0.921569, 0.854902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Window"]
+visible = false
+margin_left = 854.0
+margin_top = 192.0
+margin_right = 894.0
+margin_bottom = 232.0
+color = Color( 0.921569, 0.921569, 0.854902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Window"]
+visible = false
+margin_left = 809.0
+margin_top = 192.0
+margin_right = 849.0
+margin_bottom = 232.0
+color = Color( 0.921569, 0.921569, 0.854902, 1 )
+
+[node name="Light2D" type="Light2D" parent="Window"]
+visible = false
+position = Vector2( 688.875, 340.5 )
+scale = Vector2( 0.859863, 0.634766 )
+texture = ExtResource( 2 )
+energy = 0.5
+
+[node name="Furniture" type="Node2D" parent="."]
+visible = false
+
+[node name="Speaker" type="Sprite" parent="Furniture"]
+visible = false
+position = Vector2( 202, 458 )
+texture = ExtResource( 15 )
+
+[node name="SpeakerPlayer" type="AnimationPlayer" parent="Furniture/Speaker"]
+anims/RESET = SubResource( 13 )
+anims/play_music = SubResource( 14 )
+
+[node name="RingWhite" type="Sprite" parent="Furniture/Speaker"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -19 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 5 )
+
+[node name="Chair" type="Sprite" parent="Furniture"]
+visible = false
+position = Vector2( 565, 471 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+
+[node name="Chair2" type="Sprite" parent="Furniture"]
+visible = false
+position = Vector2( 332, 471 )
+scale = Vector2( -2, 2 )
+texture = ExtResource( 10 )
+
+[node name="Table" type="Sprite" parent="Furniture"]
+visible = false
+position = Vector2( 451, 479 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+
+[node name="PartyProps" type="Node2D" parent="Furniture"]
+visible = false
+
+[node name="Banner" type="Sprite" parent="Furniture/PartyProps"]
+position = Vector2( 512, 154 )
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="Furniture/PartyProps/Banner"]
+visible = false
+margin_left = -175.0
+margin_top = -31.0
+margin_right = 175.0
+margin_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 0.937255, 0.858824, 0.0588235, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Wholesome
+Party"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TableCloth" type="Sprite" parent="Furniture/PartyProps"]
+position = Vector2( 449, 472 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+
+[node name="CakePlate" type="Sprite" parent="Furniture/PartyProps"]
+position = Vector2( 490, 448 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 18 )
+
+[node name="Cake" type="Sprite" parent="Furniture/PartyProps/CakePlate"]
+position = Vector2( -0.5, -12 )
+texture = ExtResource( 16 )
+
+[node name="CakeCut" type="Sprite" parent="Furniture/PartyProps/CakePlate"]
+visible = false
+position = Vector2( -0.5, -12 )
+texture = ExtResource( 17 )
+
+[node name="FruitBowl" type="Sprite" parent="Furniture/PartyProps"]
+position = Vector2( 399, 418 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+
+[node name="Balloons" type="Node2D" parent="Furniture/PartyProps"]
+
+[node name="BalloonYellow" type="Sprite" parent="Furniture/PartyProps/Balloons"]
+position = Vector2( 13, 369 )
+texture = ExtResource( 22 )
+
+[node name="BalloonRed" type="Sprite" parent="Furniture/PartyProps/Balloons"]
+position = Vector2( 41, 399 )
+texture = ExtResource( 20 )
+
+[node name="BalloonBlue" type="Sprite" parent="Furniture/PartyProps/Balloons"]
+position = Vector2( 944, 393 )
+texture = ExtResource( 21 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Furniture/PartyProps/Balloons"]
+autoplay = "hover"
+anims/RESET = SubResource( 15 )
+anims/hover = SubResource( 16 )
+
+[node name="PartyPopper" parent="Furniture/PartyProps" instance=ExtResource( 23 )]
+position = Vector2( 267, 88 )
+
+[node name="PartyPopper2" parent="Furniture/PartyProps" instance=ExtResource( 23 )]
+position = Vector2( 741, 88 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, 300 )
 current = true
@@ -486,23 +380,23 @@ margin_right = 750.0
 margin_bottom = 373.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource( 27 )
+theme = SubResource( 17 )
 custom_colors/font_color = Color( 0.803922, 0.803922, 0.803922, 1 )
-custom_fonts/font = SubResource( 28 )
+custom_fonts/font = SubResource( 18 )
 text = "Press    ' spacebar '   to start"
 align = 1
 
 [node name="GameTitle" type="Label" parent="."]
-margin_left = -45.0
+margin_left = 87.0
 margin_top = 218.0
-margin_right = 825.0
+margin_right = 957.0
 margin_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource( 27 )
+theme = SubResource( 17 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 29 )
-text = "we missed"
+custom_fonts/font = SubResource( 19 )
+text = "we missed party"
 align = 1
 
 [node name="Credit" type="Label" parent="."]
@@ -512,9 +406,9 @@ margin_right = 749.0
 margin_bottom = 562.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource( 27 )
+theme = SubResource( 17 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 20 )
 text = "Credits:    z_zs    |   Lemoney    |    zesky"
 align = 1
 
@@ -525,9 +419,9 @@ margin_right = 954.0
 margin_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource( 27 )
+theme = SubResource( 17 )
 custom_colors/font_color = Color( 1, 0.0156863, 0.960784, 1 )
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 19 )
 text = "p"
 align = 1
 
@@ -538,9 +432,9 @@ margin_right = 955.0
 margin_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource( 27 )
+theme = SubResource( 17 )
 custom_colors/font_color = Color( 0.0156863, 0.678431, 1, 1 )
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 19 )
 text = "A"
 align = 1
 
@@ -551,9 +445,9 @@ margin_right = 955.0
 margin_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource( 27 )
+theme = SubResource( 17 )
 custom_colors/font_color = Color( 0.0156863, 1, 0.192157, 1 )
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 19 )
 text = "R"
 align = 1
 
@@ -564,9 +458,9 @@ margin_right = 955.0
 margin_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource( 27 )
+theme = SubResource( 17 )
 custom_colors/font_color = Color( 1, 0.960784, 0.0156863, 1 )
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 19 )
 text = "T"
 align = 1
 
@@ -577,8 +471,8 @@ margin_right = 953.0
 margin_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource( 27 )
+theme = SubResource( 17 )
 custom_colors/font_color = Color( 1, 0.109804, 0.0156863, 1 )
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 19 )
 text = "Y"
 align = 1
