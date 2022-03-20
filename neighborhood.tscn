@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://camera_spectate.gd" type="Script" id=1]
 [ext_resource path="res://actors/player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://actors/objects/interaction_instruction.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/objects/interaction_instruction.gd" type="Script" id=7]
 [ext_resource path="res://speech.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/house_1.png" type="Texture" id=9]
+[ext_resource path="res://sprites/house_2.png" type="Texture" id=10]
+[ext_resource path="res://sprites/house_3.png" type="Texture" id=11]
+[ext_resource path="res://sprites/tree_1.png" type="Texture" id=12]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -84,82 +88,89 @@ position = Vector2( 924, 50 )
 scale = Vector2( -0.4, 0.4 )
 texture = ExtResource( 5 )
 
+[node name="Distant" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.96, 1 )
+motion_mirroring = Vector2( 3840, 0 )
+
+[node name="House5" type="Sprite" parent="ParallaxBackground/Distant"]
+modulate = Color( 1, 1, 1, 0.431373 )
+position = Vector2( 2964, 462 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 11 )
+
+[node name="Tree3" type="Sprite" parent="ParallaxBackground/Distant"]
+modulate = Color( 1, 1, 1, 0.294118 )
+position = Vector2( 3103, 468 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 12 )
+
+[node name="Tree5" type="Sprite" parent="ParallaxBackground/Distant"]
+modulate = Color( 1, 1, 1, 0.294118 )
+position = Vector2( 2178, 468 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 12 )
+
+[node name="Tree4" type="Sprite" parent="ParallaxBackground/Distant"]
+modulate = Color( 1, 1, 1, 0.294118 )
+position = Vector2( 3260, 461 )
+scale = Vector2( -0.06, 0.06 )
+texture = ExtResource( 12 )
+
 [node name="Extras" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.98, 1 )
 motion_mirroring = Vector2( 3840, 0 )
 
 [node name="House2" type="Sprite" parent="ParallaxBackground/Extras"]
 modulate = Color( 1, 1, 1, 0.784314 )
-position = Vector2( 669, 495 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( 1400, 408 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
 
-[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Extras/House2"]
-margin_left = -97.0
-margin_top = -166.0
-margin_right = 97.0
-margin_bottom = 17.0
-color = Color( 0.8, 0.92549, 0.917647, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="House3" type="Sprite" parent="ParallaxBackground/Extras"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 1186, 462 )
+scale = Vector2( -0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="Tree2" type="Sprite" parent="ParallaxBackground/Extras"]
+modulate = Color( 1, 1, 1, 0.627451 )
+position = Vector2( 1063, 431 )
+scale = Vector2( -0.1, 0.1 )
+texture = ExtResource( 12 )
 
 [node name="House4" type="Sprite" parent="ParallaxBackground/Extras"]
-modulate = Color( 1, 1, 1, 0.784314 )
-position = Vector2( 182, 495 )
-scale = Vector2( 0.9, 0.9 )
-
-[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Extras/House4"]
-margin_left = -97.0
-margin_top = -166.0
-margin_right = 97.0
-margin_bottom = 17.0
-color = Color( 0.8, 0.92549, 0.917647, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+modulate = Color( 1, 1, 1, 0.745098 )
+position = Vector2( -441, 434 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 10 )
 
 [node name="Housing" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 3840, 0 )
 
-[node name="PartyHouseStart" type="Sprite" parent="ParallaxBackground/Housing"]
-position = Vector2( 0, 504 )
-
-[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Housing/PartyHouseStart"]
-margin_left = -159.0
-margin_top = -219.0
-margin_right = 159.0
-margin_bottom = 40.0
-color = Color( 0.827451, 0.717647, 0.482353, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="House" type="Sprite" parent="ParallaxBackground/Housing"]
-position = Vector2( 407, 493 )
+position = Vector2( 716, 382 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 10 )
 
-[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Housing/House"]
-margin_left = -97.0
-margin_top = -166.0
-margin_right = 97.0
-margin_bottom = 17.0
-color = Color( 0.8, 0.92549, 0.917647, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PartyHouseStart" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( 0, 357 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 9 )
+
+[node name="PartyHouseLookalike" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( 2680, 382 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )
 
 [node name="House3" type="Sprite" parent="ParallaxBackground/Housing"]
-position = Vector2( 842, 495 )
-scale = Vector2( 0.95, 0.95 )
+position = Vector2( 1754, 356 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 11 )
 
-[node name="Placeholder" type="ColorRect" parent="ParallaxBackground/Housing/House3"]
-margin_left = -97.0
-margin_top = -166.0
-margin_right = 97.0
-margin_bottom = 17.0
-color = Color( 0.8, 0.92549, 0.917647, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Tree1" type="Sprite" parent="ParallaxBackground/Housing"]
+position = Vector2( 343, 335 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
 
 [node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 3840, 0 )
@@ -191,7 +202,7 @@ margin_left = -2021.5
 margin_top = -15.5
 margin_right = 2021.5
 margin_bottom = 130.5
-color = Color( 0.631373, 0.631373, 0.6, 1 )
+color = Color( 0.6, 0.627451, 0.631373, 1 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -206,7 +217,7 @@ margin_left = -2021.5
 margin_top = -50.0
 margin_right = 2021.5
 margin_bottom = -41.0
-color = Color( 0.529412, 0.529412, 0.494118, 1 )
+color = Color( 0.427451, 0.47451, 0.501961, 1 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -221,73 +232,7 @@ margin_left = -1961.5
 margin_top = 89.5
 margin_right = 2081.5
 margin_bottom = 250.5
-color = Color( 0.223529, 0.223529, 0.231373, 1 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Foreground2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 3840, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/Foreground2"]
-position = Vector2( 420, 455 )
-
-[node name="PlaceholderPavement" type="ColorRect" parent="ParallaxBackground/Foreground2/Sprite"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -1961.5
-margin_top = 54.5
-margin_right = 2081.5
-margin_bottom = 89.5
-color = Color( 0.129412, 0.129412, 0.129412, 1 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Base" type="ColorRect" parent="ParallaxBackground/Foreground2/Sprite/PlaceholderPavement"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -2021.5
-margin_top = -15.5
-margin_right = 2021.5
-margin_bottom = 130.5
-color = Color( 0.631373, 0.631373, 0.6, 1 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Shadow" type="ColorRect" parent="ParallaxBackground/Foreground2/Sprite/PlaceholderPavement/Base"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -2021.5
-margin_top = -50.0
-margin_right = 2021.5
-margin_bottom = -41.0
-color = Color( 0.529412, 0.529412, 0.494118, 1 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="PlaceholderRoad" type="ColorRect" parent="ParallaxBackground/Foreground2/Sprite"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -1961.5
-margin_top = 89.5
-margin_right = 2081.5
-margin_bottom = 250.5
-color = Color( 0.223529, 0.223529, 0.231373, 1 )
+color = Color( 0.140137, 0.189724, 0.21875, 1 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -300,6 +245,7 @@ collision_mask = 0
 physics_material_override = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+visible = false
 shape = SubResource( 6 )
 
 [node name="Spawnpoint" type="Node2D" parent="."]
