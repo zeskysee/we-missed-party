@@ -34,3 +34,8 @@ func get_ending_text():
 				
 				
 	return "%s\nParty" % text
+
+
+func reset():
+	total_number_of_npc = 0
+	is_ending = false
