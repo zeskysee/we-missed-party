@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://camera_spectate.gd" type="Script" id=1]
 [ext_resource path="res://actors/player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sprites/cloud_2.png" type="Texture" id=5]
 [ext_resource path="res://actors/objects/interaction_instruction.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/objects/interaction_instruction.gd" type="Script" id=7]
+[ext_resource path="res://speech.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -29,6 +30,7 @@ extents = Vector2( 4000, 16.5 )
 
 [node name="Neighborhood" type="Node2D"]
 script = ExtResource( 4 )
+speech_scene = ExtResource( 8 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -325,6 +327,7 @@ remote_path = NodePath("../../Camera")
 position = Vector2( 2, 388 )
 script = ExtResource( 7 )
 
+[connection signal="invite" from="Player" to="." method="_on_Player_invite"]
 [connection signal="move_label" from="Player" to="InteractionInstruction" method="_on_Player_move_label"]
 
 [editable path="Player"]

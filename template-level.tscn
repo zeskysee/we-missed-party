@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://actors/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/npc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://template-level.gd" type="Script" id=4]
 [ext_resource path="res://actors/objects/interaction_instruction.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/objects/interaction_instruction.gd" type="Script" id=7]
 
 [node name="TemplateLevel" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -22,14 +24,16 @@ position = Vector2( 155, 393 )
 script = ExtResource( 7 )
 
 [node name="NPC" parent="." instance=ExtResource( 3 )]
-position = Vector2( 889, 541 )
+position = Vector2( 889, 559 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 176, 541 )
+position = Vector2( 227, 559 )
 speed = Vector2( 500, 800 )
 label_height = 105.0
 
 [connection signal="contact" from="NPC" to="Player" method="_on_NPC_contact"]
 [connection signal="contact_loss" from="NPC" to="Player" method="_on_NPC_contact_loss"]
+[connection signal="reply" from="NPC" to="." method="_on_NPC_reply"]
 [connection signal="interact" from="Player" to="NPC" method="_on_Player_interact"]
+[connection signal="invite" from="Player" to="." method="_on_Player_invite"]
 [connection signal="move_label" from="Player" to="InteractionInstruction" method="_on_Player_move_label"]

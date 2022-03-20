@@ -1,5 +1,6 @@
 extends Node2D
 
+export (PackedScene) var speech_scene
 
 # Positions where NPC should be.
 var npc_spots = [
@@ -56,3 +57,24 @@ func respawn(ahead = true):
 		npc.connect("contact", player, "_on_NPC_contact")
 		npc.connect("contact_loss", player, "_on_NPC_contact_loss")
 		player.connect("interact", npc, "_on_Player_interact")
+		npc.connect("reply", self, "_on_NPC_reply")
+
+
+func _on_Player_invite(npc_id: String):
+	var playerSpeech = speech_scene.instance()
+	playerSpeech.text = "Let's come to my cool house party!"
+	playerSpeech.is_skippable = true
+	playerSpeech.position.x = player.position.x
+	playerSpeech.position.y = player.position.y - 150
+	playerSpeech.destroy_callback = funcref(player, "interact_npc")
+	add_child(playerSpeech)
+	
+
+func _on_NPC_reply(npc_id: String, npc_position: Vector2):
+	var npcSpeech = speech_scene.instance()
+	npcSpeech.text = "Woah! I love party! Let's go."
+	npcSpeech.is_skippable = true
+	npcSpeech.position.x = npc_position.x
+	npcSpeech.position.y = npc_position.y - 150
+	npcSpeech.destroy_callback = funcref(player, "ask_npc_follow")
+	add_child(npcSpeech)
