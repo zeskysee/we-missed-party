@@ -26,9 +26,9 @@ func get_ending_text():
 		3:
 			text = "Fantastic Four"
 		4:
-			text = "Guardian of Galaxy\nParty"
+			text = "Guardian of Galaxy"
 		5:
-			text = "Justice League\nParty"
+			text = "Justice League"
 		_:
 			text = "Wholesome"
 				
