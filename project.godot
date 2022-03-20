@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="We Missed Party"
-run/main_scene="res://party_house.tscn"
+run/main_scene="res://opening.tscn"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
