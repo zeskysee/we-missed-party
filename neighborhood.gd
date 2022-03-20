@@ -1,6 +1,7 @@
 extends Node2D
 
 export (PackedScene) var speech_scene
+export (PackedScene) var party_house_door_scene
 
 # Positions where NPC should be.
 var npc_spots = [
@@ -9,6 +10,7 @@ var npc_spots = [
 ]
 var spawn_npc_counter: = 1
 var follow_npc_counter: = 0
+var area_counter: = 0
 var target_npc_name: = ""
 var target_npc_position: = Vector2.ZERO
 
@@ -44,9 +46,13 @@ func _physics_process(_delta):
 func respawn(ahead = true):
 	# Remove all NPCs who were left behind.
 	for npc in npc_list.get_children():
-		if npc.npc_body.global_position.distance_to(player.global_position) > edge_x:
-			npc.queue_free()
-			
+		if npc.name.begins_with("npc"):
+			if npc.npc_body.global_position.distance_to(player.global_position) > edge_x:
+				npc.queue_free()
+		else:
+			if npc.global_position.distance_to(player.global_position) > edge_x:
+				npc.queue_free()
+	
 	# Respawn NPCs to take on the new loop.
 	for data in npc_spots:
 		var npc = data.npc_scene.instance()
@@ -62,29 +68,40 @@ func respawn(ahead = true):
 		player.connect("interact", npc, "_on_Player_interact", [player])
 		npc.connect("reply", self, "_on_NPC_reply")
 		npc.connect("moved_back", self, "_on_NPC_moved_back")
+	
+	var start = start_x if ahead else start_x - edge_x
+	var party_house_door_area = party_house_door_scene.instance()
+	party_house_door_area.first_entry = area_counter == 0
+	npc_list.add_child(party_house_door_area)
+	
+	area_counter += 1
+	
+	party_house_door_area.global_position = Vector2(start, 0)
+	party_house_door_area.connect("enter_party_house_area", player, "_on_PartyHouseDoorArea_enter_party_house_area")
+	party_house_door_area.connect("exit_party_house_area", player, "_on_PartyHouseDoorArea_exit_party_house_area")
 
 
 func _on_Player_invite(npc_id: String):
-	var playerSpeech = speech_scene.instance()
-	playerSpeech.text = "Let's come to my cool house party!"
-	playerSpeech.is_skippable = true
-	playerSpeech.position.x = player.position.x
-	playerSpeech.position.y = player.position.y - 150
-	playerSpeech.connect("tree_exited", player, "interact_npc", [npc_id])
-	add_child(playerSpeech)
+	var player_speech = speech_scene.instance()
+	player_speech.text = "Let's come to my cool house party!"
+	player_speech.is_skippable = true
+	player_speech.position.x = player.position.x
+	player_speech.position.y = player.position.y - 150
+	player_speech.connect("tree_exited", player, "interact_npc", [npc_id])
+	add_child(player_speech)
 	
 
 func _on_NPC_reply(npc_id: String, npc_position: Vector2):
 	target_npc_name = npc_id
 	target_npc_position = npc_position
 
-	var npcSpeech = speech_scene.instance()
-	npcSpeech.text = "Woah! I love party! Let's go!"
-	npcSpeech.is_skippable = true
-	npcSpeech.position.x = npc_position.x
-	npcSpeech.position.y = npc_position.y - 150
-	npcSpeech.destroy_callback = funcref(self, "npc_follow_player")
-	add_child(npcSpeech)
+	var npc_speech = speech_scene.instance()
+	npc_speech.text = "Woah! I love party! Let's go!"
+	npc_speech.is_skippable = true
+	npc_speech.position.x = npc_position.x
+	npc_speech.position.y = npc_position.y - 150
+	npc_speech.destroy_callback = funcref(self, "npc_follow_player")
+	add_child(npc_speech)
 
 
 func npc_follow_player():
@@ -101,3 +118,7 @@ func npc_follow_player():
 
 func _on_NPC_moved_back():
 	player.available()
+
+
+func _on_Player_enter_party_house():
+	get_tree().change_scene("res://party_house.tscn")

@@ -4,6 +4,7 @@ signal interact
 signal invite
 signal move_label
 signal follow
+signal enter_party_house
 
 export var label_height: = 50.0
 
@@ -14,6 +15,7 @@ onready var collision_shape = $CollisionShape2D
 var status = "idle"
 var in_contact: = false
 var in_conversation = false
+var at_party_house_door: = false
 var npc_id_in_contact: = ""
 
 
@@ -36,7 +38,8 @@ func _physics_process(delta):
 	
 	emit_signal("move_label", _velocity, position.y - collision_shape.get_shape().height - label_height, can_interact)
 	
-	_invite(can_interact)		
+	_invite(can_interact)
+	_enter_party_house()	
 
 
 func _invite(can_interact: bool):
@@ -44,6 +47,11 @@ func _invite(can_interact: bool):
 		in_conversation = true
 		status = "interacting"
 		emit_signal("invite", npc_id_in_contact)
+
+func _enter_party_house():
+	if at_party_house_door and Input.is_action_pressed("interact"):
+		at_party_house_door = false
+		emit_signal("enter_party_house")
 		
 func interact_npc(carry_over_id):
 	status = "wait_reply"
@@ -61,3 +69,10 @@ func _on_NPC_contact_loss():
 	status = "idle"
 	in_contact = false
 	npc_id_in_contact = ""
+
+
+func _on_PartyHouseDoorArea_enter_party_house_area():
+	at_party_house_door = true
+
+func _on_PartyHouseDoorArea_exit_party_house_area():
+	at_party_house_door = false

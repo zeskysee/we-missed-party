@@ -28,9 +28,6 @@ margin_top = -10.0
 margin_right = 114.0
 margin_bottom = 10.0
 color = Color( 0.423529, 0.698039, 0.694118, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="InteractLabel" type="Label" parent="."]
 margin_left = -106.0
@@ -43,6 +40,3 @@ theme = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Press    ' spacebar '   to interact"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
