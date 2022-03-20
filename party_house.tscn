@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://party_house.gd" type="Script" id=1]
 [ext_resource path="res://sprites/light_window.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://sprites/cloud_1.png" type="Texture" id=27]
 [ext_resource path="res://sprites/cloud_2.png" type="Texture" id=28]
 [ext_resource path="res://animation_dance.tres" type="Animation" id=29]
+[ext_resource path="res://sprites/balloon_1.png" type="Texture" id=30]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -630,17 +631,29 @@ texture = ExtResource( 24 )
 
 [node name="PartyHouse" type="Sprite" parent="Outer"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 504, 470 )
+position = Vector2( 501, 359 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 26 )
 
-[node name="Placeholder" type="ColorRect" parent="Outer/PartyHouse"]
-margin_left = -159.0
-margin_top = -219.0
-margin_right = 159.0
-margin_bottom = 40.0
-color = Color( 0.827451, 0.717647, 0.482353, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Balloon1" type="Sprite" parent="Outer/PartyHouse"]
+position = Vector2( -910, 349.999 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+
+[node name="Balloon2" type="Sprite" parent="Outer/PartyHouse"]
+position = Vector2( 923.334, 349.999 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+
+[node name="Balloon3" type="Sprite" parent="Outer/PartyHouse"]
+position = Vector2( 390, 349.999 )
+scale = Vector2( -0.3, 0.3 )
+texture = ExtResource( 30 )
+
+[node name="Balloon4" type="Sprite" parent="Outer/PartyHouse"]
+position = Vector2( -380, 349.999 )
+scale = Vector2( -0.3, 0.3 )
+texture = ExtResource( 30 )
 
 [node name="Tree1" type="Sprite" parent="Outer"]
 position = Vector2( 852, 337 )
