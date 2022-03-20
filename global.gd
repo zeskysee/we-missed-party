@@ -18,9 +18,9 @@ func get_ending_text():
 	
 	match total_number_of_npc:
 		0:
-			text = "Love Yourself"
+			text = "Single Player"
 		1:
-			text = "Couple"
+			text = "It Takes Two"
 		2:
 			text = "Three-Musketeers"
 		3:
