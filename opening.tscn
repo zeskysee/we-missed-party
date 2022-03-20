@@ -515,7 +515,7 @@ grow_vertical = 2
 theme = SubResource( 27 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 30 )
-text = "Credits:    z_zs    |   Lemoney    |    zesky"
+text = "Credits:    z_z7    |   railkill    |    zeskysee"
 align = 1
 
 [node name="P" type="Label" parent="."]
