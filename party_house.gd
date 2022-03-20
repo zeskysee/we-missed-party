@@ -34,6 +34,7 @@ func _on_first_speech_tree_exited():
 # Camera pans after second speech.
 func _on_second_speech_tree_exited():
 	camera_player.play("pan_camera")
+	MusicPlayer.stop()
 
 
 # Player's second speech plays after monster's first speech.
@@ -53,6 +54,7 @@ func _on_house_animation_finished(_anim_name):
 	camera_player.play("pan_camera_back")
 	#props.visible = true
 	speaker_player.play("play_music")
+	MusicPlayer.play_street_song()
 	# TODO: Play music.
 
 
