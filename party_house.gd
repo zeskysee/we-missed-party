@@ -51,7 +51,7 @@ func _on_camera_animation_finished(anim_name):
 
 func _on_house_animation_finished(_anim_name):
 	camera_player.play("pan_camera_back")
-	props.visible = true
+	#props.visible = true
 	speaker_player.play("play_music")
 	# TODO: Play music.
 
