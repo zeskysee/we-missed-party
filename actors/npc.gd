@@ -18,8 +18,7 @@ func _physics_process(delta):
 		if current_body_position_x <= target_position.x:
 			npc_body.swap_direction()
 			is_moving_to_player_back = false
-			yield(get_tree().create_timer(0.5), "timeout")
-			emit_signal("moved_back")
+			call_deferred("emit_signal", "moved_back")
 
 func _on_NPC_body_entered(body):
 	emit_signal("contact", name)
@@ -27,8 +26,9 @@ func _on_NPC_body_entered(body):
 func _on_NPC_body_exited(body):
 	emit_signal("contact_loss")
 
-func _on_Player_interact(npc_id: String):
+func _on_Player_interact(npc_id: String, player):
 	if npc_id == name:
+		npc_body.player = player
 		emit_signal("reply", name, position)
 
 func follow_player(player_position: Vector2):
