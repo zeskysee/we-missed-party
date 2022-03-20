@@ -1,6 +1,14 @@
 extends Node2D
 
 
+const NPC_SPRITE = preload("res://sprites/npc_stand.png")
+
+# If true, NPCs spawn left side of the room in ending. False means right side.
+# This will be alternated on every spawn.
+var spawn_left = true
+# List of possible [scale, y-position] for random y adjustment in NPC spawns.
+var random_scale_y = [[0.085, 502], [0.082, 497], [0.08, 492]]
+
 onready var camera_player = $CameraPlayer
 onready var house_player = $Outer/AnimationPlayer
 onready var player_player = $PlayerPlayer
@@ -8,6 +16,7 @@ onready var magic_monster = $MagicMonster
 onready var first_speech = $FirstSpeech
 onready var second_speech = $SecondSpeech
 onready var third_speech = $ThirdSpeech
+onready var npc_spawns = $NPCSpawns
 
 # Party props.
 onready var props = $Furniture/PartyProps
@@ -21,8 +30,8 @@ onready var speaker_player = $Furniture/Speaker/SpeakerPlayer
 
 func _ready():
 	# Get ending state from global, if true, then play ending.
-	#if true:
-	#	play_ending()
+	if Global.is_ending:
+		play_ending()
 	pass
 
 
@@ -55,7 +64,6 @@ func _on_house_animation_finished(_anim_name):
 	#props.visible = true
 	speaker_player.play("play_music")
 	MusicPlayer.play_street_song()
-	# TODO: Play music.
 
 
 # Rearanges the scene for the ending.
@@ -69,9 +77,9 @@ func play_ending():
 	magic_monster.global_position.y = 250
 	$Backwall.color = Color(0.71, 0.67, 0.71, 1.0)
 	$Ceiling.color = Color(0.57, 0.53, 0.56, 1.0)
-	#set_ending_text(Global.get_ending_text())
-	#randomize()
-	#spawn_npc()
+	set_ending_text(Global.get_ending_text())
+	randomize()
+	spawn_npcs()
 
 
 func pop():
@@ -108,16 +116,24 @@ func set_ending_text(text):
 
 
 # Spawns the party go-er depending on the global ending state.
-func spawn_npc(npcs = [preload("res://actors/npc.tscn")]):
-	for npc in npcs:
+func spawn_npcs():
+	for i in range(Global.total_number_of_npc):
 		# 1. Get the resource or sprite of the npc to spawn.
+		var npc_sprite = Sprite.new()
+		npc_sprite.texture = NPC_SPRITE
 		# 2. Spawn them at any x-position from 0 to 1024. y-position ~492.
-#		var instance = npc.instance()
-#		add_child(instance)
-#		instance.global_position = Vector2(rand_range(100, 924), 492)
-#		if instance.global_position.x < 512:
-#			instance.scale.x *= -1
-		pass
+		npc_spawns.add_child(npc_sprite)
+		var index = randi() % random_scale_y.size()
+		var x_location = rand_range(100, 462) if spawn_left else \
+				rand_range(562, 924)
+		npc_sprite.z_index = random_scale_y.size() - index
+		npc_sprite.scale = Vector2(random_scale_y[index][0],
+				random_scale_y[index][0])
+		npc_sprite.global_position = Vector2(x_location,
+				random_scale_y[index][1])
+		if npc_sprite.global_position.x > 512:
+			npc_sprite.scale.x *= -1
+		spawn_left = !spawn_left
 
 
 func start_transition():

@@ -988,9 +988,12 @@ position = Vector2( 741, 88 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 
+[node name="NPCSpawns" type="Node2D" parent="."]
+
 [node name="PlayerSprite" type="Sprite" parent="."]
 position = Vector2( 706, 468 )
 scale = Vector2( 0.1, 0.1 )
+z_index = 5
 texture = ExtResource( 9 )
 
 [node name="FirstSpeech" parent="." instance=ExtResource( 3 )]
