@@ -130,7 +130,7 @@ func rearrange_for_party():
 		second_speech.disconnect("tree_exited", self,
 				"_on_second_speech_tree_exited")
 	var fourth_speech = get_node_or_null("FourthSpeech")
-	if third_speech:
+	if is_instance_valid(third_speech):
 		third_speech.disconnect("tree_exited", fourth_speech, "play")
 	var monster_second = get_node_or_null(
 			"MagicMonster/AnimatedSprite/SecondSpeech")
