@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://camera_spectate.gd" type="Script" id=1]
 [ext_resource path="res://actors/player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,87 @@
 [ext_resource path="res://sprites/house_3.png" type="Texture" id=11]
 [ext_resource path="res://sprites/tree_1.png" type="Texture" id=12]
 [ext_resource path="res://party_house_door_area.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/ui_human.png" type="Texture" id=14]
+[ext_resource path="res://sprites/ring_white.png" type="Texture" id=15]
+[ext_resource path="res://theme_basic.tres" type="Theme" id=16]
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RingWhite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RingWhite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/UiHuman:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "ping"
+tracks/0/type = "value"
+tracks/0/path = NodePath("RingWhite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RingWhite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/UiHuman:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.345098, 0.827451, 0.92549, 1 ), Color( 1, 1, 1, 1 ), Color( 0.345098, 0.827451, 0.92549, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -38,6 +119,45 @@ script = ExtResource( 4 )
 speech_scene = ExtResource( 8 )
 party_house_door_scene = ExtResource( 13 )
 
+[node name="UINPCCount" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UINPCCount"]
+margin_right = 16.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UiHuman" type="Sprite" parent="UINPCCount/Control"]
+position = Vector2( 3, 5 )
+texture = ExtResource( 14 )
+offset = Vector2( 8, 8 )
+
+[node name="Label" type="Label" parent="UINPCCount/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 12.0
+margin_top = 7.0
+margin_right = 20.0
+margin_bottom = 21.0
+theme = ExtResource( 16 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UINPCPlayer" type="AnimationPlayer" parent="UINPCCount"]
+anims/RESET = SubResource( 7 )
+anims/ping = SubResource( 8 )
+
+[node name="RingWhite" type="Sprite" parent="UINPCCount"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 11, 13 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 15 )
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Static" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -48,11 +168,17 @@ position = Vector2( -1526.2, -134.007 )
 rotation = 1.5708
 scale = Vector2( 0.436021, 8031.52 )
 texture = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Ground" type="Sprite" parent="ParallaxBackground/Static/Gradient"]
 position = Vector2( 1105.62, -0.00280085 )
 scale = Vector2( 0.781819, 1 )
 texture = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.04, 1 )

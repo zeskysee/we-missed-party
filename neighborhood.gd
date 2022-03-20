@@ -14,7 +14,6 @@ var area_counter: = 0
 var target_npc_name: = ""
 var target_npc_position: = Vector2.ZERO
 
-onready var camera = $Camera
 onready var floor_loop = $Floor
 onready var foreground = $ParallaxBackground/Foreground
 onready var interaction_instruction = $InteractionInstruction
@@ -22,6 +21,9 @@ onready var npc_list = $NPCList
 onready var player = $Player
 onready var start_x = 0
 onready var edge_x = foreground.motion_mirroring.x  # order is important
+
+onready var ui_npc_animation_player = $UINPCCount/UINPCPlayer
+onready var ui_npc_label = $UINPCCount/Control/Label
 
 
 func _ready():
@@ -107,6 +109,9 @@ func _on_NPC_reply(npc_id: String, npc_position: Vector2):
 func npc_follow_player():
 	follow_npc_counter += 1
 	Global.total_number_of_npc += 1
+	# Play ping animation.
+	ui_npc_animation_player.play("ping")
+	ui_npc_label.text = str(follow_npc_counter)
 	
 	var target_npc = npc_list.get_node(target_npc_name)
 	var target_position = player.position
