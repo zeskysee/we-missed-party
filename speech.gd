@@ -14,6 +14,8 @@ export(String, MULTILINE) var text = "Hi."
 
 # Keep track of characters shown since last tick.
 var characters_shown = 0
+# If true, the speech is in the process of being destroyed.
+var is_being_destroyed = false
 # Time elapsed since this speech node is playing.
 var time_elapsed: float = 0.0
 
@@ -49,7 +51,7 @@ func _input(event):
 	if is_skippable and event.is_action_pressed("ui_accept"):
 		if is_playing:
 			time_elapsed = time_to_finish
-		elif label.percent_visible == 1:
+		elif label.percent_visible == 1 and not is_being_destroyed:
 			destroy()
 
 
@@ -60,6 +62,7 @@ func _on_destroy(animation_name):
 
 # Destroys the speech bubble and removes it from the game.
 func destroy():
+	is_being_destroyed = true
 	hide_bubble()
 	animation_player.connect("animation_finished", self, "_on_destroy")
 
@@ -68,6 +71,11 @@ func destroy():
 func hide_bubble():
 	animation_player.play_backwards("show")
 
+
+# Plays the speech.
+func play():
+	show_bubble()
+	is_playing = true
 
 # Plays the show animation of the speech bubble.
 func show_bubble():

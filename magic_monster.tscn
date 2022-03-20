@@ -210,8 +210,37 @@ frames = SubResource( 5 )
 position = Vector2( 40, -62 )
 rotation = 1.42109e-14
 is_playing = false
+is_skippable = true
 show_on_ready = false
 text = "Then let's throw a party for everyone!!"
+
+[node name="SecondSpeech" parent="AnimatedSprite" instance=ExtResource( 2 )]
+position = Vector2( 40, -62 )
+rotation = 1.42109e-14
+is_playing = false
+is_skippable = true
+show_on_ready = false
+text = "Have you forgotten about the people around you?"
+
+[node name="ThirdSpeech" parent="AnimatedSprite" instance=ExtResource( 2 )]
+position = Vector2( 40, -62 )
+rotation = 1.42109e-14
+is_playing = false
+is_skippable = true
+show_on_ready = false
+text = "Your neighbors! Your friends!
+Close or not, they are part
+of your community."
+
+[node name="FourthSpeech" parent="AnimatedSprite" instance=ExtResource( 2 )]
+position = Vector2( 40, -62 )
+rotation = 1.42109e-14
+is_playing = false
+is_skippable = true
+show_on_ready = false
+text = "Go, go, go invite them now!
+They wanna party too,
+not just you!"
 
 [node name="Particles2D" type="Particles2D" parent="."]
 emitting = false
@@ -235,4 +264,6 @@ stream = ExtResource( 3 )
 [node name="JingleSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 
+[connection signal="tree_exited" from="AnimatedSprite/SecondSpeech" to="AnimatedSprite/ThirdSpeech" method="play"]
+[connection signal="tree_exited" from="AnimatedSprite/ThirdSpeech" to="AnimatedSprite/FourthSpeech" method="play"]
 [connection signal="animation_finished" from="MonsterPlayer" to="." method="_on_monster_player_animation_finished"]

@@ -1,38 +1,573 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://party_house.gd" type="Script" id=1]
 [ext_resource path="res://sprites/light_window.png" type="Texture" id=2]
 [ext_resource path="res://speech.tscn" type="PackedScene" id=3]
 [ext_resource path="res://magic_monster.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/ring_white.png" type="Texture" id=5]
+[ext_resource path="res://sounds/fly_away.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sounds/cut.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sounds/coin.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sprites/player_stand.png" type="Texture" id=9]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 3840
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.202186, 0.688525 )
+colors = PoolColorArray( 0.517647, 0.635294, 0.388235, 0, 0.65098, 0.623529, 0.552941, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PartyHouse:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RingWhite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RingWhite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 15, 15 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RingWhite2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 15, 15 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RingWhite2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("RingWhite3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("RingWhite3:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 15, 15 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "change"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PartyHouse:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RingWhite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RingWhite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 15, 15 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RingWhite2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 15, 15 ), Vector2( 15, 15 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RingWhite2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("RingWhite3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("RingWhite3:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 15, 15 ), Vector2( 15, 15 ), Vector2( 1, 1 ) ]
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("HouseAudio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 706, 468 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "shocked"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 706, 468 ), Vector2( 718, 462 ), Vector2( 706, 468 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( -0.1, 0.1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 12.3391, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Camera2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 512, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Camera2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 300, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "pan_camera"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Camera2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 512, -0.25, 0, 0.25, 0, 512, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Camera2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 300, -0.25, 0, 0.25, 0, -1432, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("PanAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "pan_camera_back"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Camera2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 512, -0.25, 0, 0.25, 0, 512, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Camera2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -1432, -0.25, 0, 0.25, 0, 300, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("PanAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [node name="PartyHouse" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="Outer" type="Node2D" parent="."]
+position = Vector2( 0, -1773 )
+
+[node name="Gradient" type="Sprite" parent="Outer"]
+position = Vector2( 545.004, -133.999 )
+rotation = 1.5708
+scale = Vector2( 0.436021, 2282.12 )
+texture = SubResource( 2 )
+
+[node name="Ground" type="Sprite" parent="Outer/Gradient"]
+position = Vector2( 1105.62, -0.00280085 )
+scale = Vector2( 0.781819, 1 )
+texture = SubResource( 4 )
+
+[node name="House" type="Sprite" parent="Outer"]
+position = Vector2( 501, 495 )
+
+[node name="Placeholder" type="ColorRect" parent="Outer/House"]
+margin_left = -97.0
+margin_top = -166.0
+margin_right = 97.0
+margin_bottom = 17.0
+color = Color( 0.8, 0.92549, 0.917647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PartyHouse" type="Sprite" parent="Outer"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 504, 470 )
+
+[node name="Placeholder" type="ColorRect" parent="Outer/PartyHouse"]
+margin_left = -159.0
+margin_top = -219.0
+margin_right = 159.0
+margin_bottom = 40.0
+color = Color( 0.827451, 0.717647, 0.482353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Road" type="Sprite" parent="Outer"]
+position = Vector2( 420, 455 )
+
+[node name="PlaceholderPavement" type="ColorRect" parent="Outer/Road"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1961.5
+margin_top = 54.5
+margin_right = 2081.5
+margin_bottom = 89.5
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="ColorRect" parent="Outer/Road/PlaceholderPavement"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2021.5
+margin_top = -15.5
+margin_right = 2021.5
+margin_bottom = 130.5
+color = Color( 0.631373, 0.631373, 0.6, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Shadow" type="ColorRect" parent="Outer/Road/PlaceholderPavement/Base"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2021.5
+margin_top = -50.0
+margin_right = 2021.5
+margin_bottom = -41.0
+color = Color( 0.529412, 0.529412, 0.494118, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PlaceholderRoad" type="ColorRect" parent="Outer/Road"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1961.5
+margin_top = 89.5
+margin_right = 2081.5
+margin_bottom = 250.5
+color = Color( 0.223529, 0.223529, 0.231373, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RingWhite" type="Sprite" parent="Outer"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 503, 415 )
+scale = Vector2( 15, 15 )
+texture = ExtResource( 5 )
+
+[node name="RingWhite2" type="Sprite" parent="Outer"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 503, 415 )
+scale = Vector2( 15, 15 )
+texture = ExtResource( 5 )
+
+[node name="RingWhite3" type="Sprite" parent="Outer"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 503, 415 )
+scale = Vector2( 15, 15 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Outer"]
+anims/RESET = SubResource( 8 )
+anims/change = SubResource( 7 )
+
+[node name="HouseAudio" type="AudioStreamPlayer2D" parent="Outer"]
+position = Vector2( 503, 393 )
+stream = ExtResource( 8 )
+volume_db = -4.0
+
 [node name="Backwall" type="ColorRect" parent="."]
-margin_left = -59.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.0
 margin_top = 62.0
-margin_right = 1072.0
-margin_bottom = 529.0
+margin_right = 1078.0
+margin_bottom = 530.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 565, 234 )
 color = Color( 0.67451, 0.694118, 0.713726, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Floor" type="ColorRect" parent="."]
-margin_left = -60.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.0
 margin_top = 495.0
-margin_right = 1072.0
+margin_right = 1078.0
 margin_bottom = 633.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 565, 69 )
 color = Color( 0.639216, 0.592157, 0.54902, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Ceiling" type="ColorRect" parent="."]
-margin_left = -60.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.0
 margin_top = -42.0
-margin_right = 1072.0
+margin_right = 1078.0
 margin_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 565, 69 )
 color = Color( 0.533333, 0.568627, 0.568627, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,27 +622,65 @@ scale = Vector2( 0.859863, 0.634766 )
 texture = ExtResource( 2 )
 energy = 0.5
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 698, 458 )
+[node name="PlayerSprite" type="Sprite" parent="."]
+position = Vector2( 706, 468 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 9 )
 
-[node name="Speech" parent="." instance=ExtResource( 3 )]
+[node name="FirstSpeech" parent="." instance=ExtResource( 3 )]
 position = Vector2( 755, 392 )
 is_skippable = true
 text = "It has been so long since I've
 been to a party..."
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SecondSpeech" parent="." instance=ExtResource( 3 )]
+position = Vector2( 755, 392 )
+is_playing = false
+is_skippable = true
+show_on_ready = false
+text = "What is this magical monster?!"
+
+[node name="ThirdSpeech" parent="." instance=ExtResource( 3 )]
+position = Vector2( 755, 392 )
+is_playing = false
+is_skippable = true
+show_on_ready = false
+text = "Wow! My house!"
+
+[node name="FourthSpeech" parent="." instance=ExtResource( 3 )]
+position = Vector2( 755, 392 )
+is_playing = false
+is_skippable = true
+show_on_ready = false
+text = "But I have no one to party with."
+
+[node name="PlayerPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 10 )
+anims/shocked = SubResource( 11 )
+
+[node name="CameraPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/pan_camera = SubResource( 6 )
+anims/pan_camera_back = SubResource( 9 )
+
+[node name="PanAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, 300 )
+current = true
 
 [node name="MagicMonster" parent="." instance=ExtResource( 4 )]
 position = Vector2( 274, 496 )
 
-[node name="TestDestroy" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-autostart = true
+[connection signal="animation_finished" from="Outer/AnimationPlayer" to="." method="_on_house_animation_finished"]
+[connection signal="tree_exited" from="FirstSpeech" to="." method="_on_first_speech_tree_exited"]
+[connection signal="tree_exited" from="SecondSpeech" to="." method="_on_second_speech_tree_exited"]
+[connection signal="tree_exited" from="ThirdSpeech" to="FourthSpeech" method="play"]
+[connection signal="tree_exited" from="FourthSpeech" to="MagicMonster/AnimatedSprite/SecondSpeech" method="play"]
+[connection signal="animation_finished" from="CameraPlayer" to="." method="_on_camera_animation_finished"]
+[connection signal="tree_exited" from="MagicMonster/AnimatedSprite/FirstSpeech" to="." method="_on_monster_first_tree_exited"]
+[connection signal="tree_exited" from="MagicMonster/AnimatedSprite/FourthSpeech" to="." method="start_transition"]
 
-[connection signal="tree_exited" from="Speech" to="." method="_on_first_speech_tree_exited"]
-[connection signal="timeout" from="TestDestroy" to="." method="_on_test_destroy_timeout"]
+[editable path="MagicMonster"]
