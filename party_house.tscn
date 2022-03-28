@@ -1034,6 +1034,9 @@ current = true
 [node name="MagicMonster" parent="." instance=ExtResource( 4 )]
 position = Vector2( 278, 370 )
 
+[node name="AnimatedSprite" parent="MagicMonster/Rescale" index="0"]
+frame = 0
+
 [node name="FirstSpeech" parent="MagicMonster" index="6"]
 position = Vector2( 53.9995, -42 )
 
