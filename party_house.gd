@@ -41,7 +41,7 @@ func _ready():
 func _input(event):
 	if Global.is_ending and (event.is_action_pressed("interact") or \
 			event.is_action_pressed("jump")):
-		Transition.wipe_in(preload("res://opening.tscn"))
+		Transition.wipe_in(preload("res://ui/opening.tscn"))
 
 
 # Monster appears after first speech.
@@ -77,7 +77,7 @@ func _on_house_animation_finished(_anim_name):
 
 func _on_return_to_main_menu(anim_name):
 	if anim_name == "in":
-		get_tree().change_scene("res://opening.tscn")
+		get_tree().change_scene("res://ui/opening.tscn")
 
 
 # Rearanges the scene for the ending.

@@ -27,14 +27,14 @@ _global_script_class_icons={
 [application]
 
 config/name="We Missed Party"
-run/main_scene="res://opening.tscn"
+run/main_scene="res://ui/opening.tscn"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
-Transition="*res://transition.tscn"
-MusicPlayer="*res://music_player.tscn"
+Transition="*res://ui/transition.tscn"
+MusicPlayer="*res://ui/music_player.tscn"
 Global="*res://global.gd"
 
 [display]

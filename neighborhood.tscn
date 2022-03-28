@@ -7,7 +7,7 @@
 [ext_resource path="res://sprites/cloud_2.png" type="Texture" id=5]
 [ext_resource path="res://actors/objects/interaction_instruction.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/objects/interaction_instruction.gd" type="Script" id=7]
-[ext_resource path="res://speech.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/speech.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sprites/house_1.png" type="Texture" id=9]
 [ext_resource path="res://sprites/house_2.png" type="Texture" id=10]
 [ext_resource path="res://sprites/house_3.png" type="Texture" id=11]
@@ -15,7 +15,7 @@
 [ext_resource path="res://party_house_door_area.tscn" type="PackedScene" id=13]
 [ext_resource path="res://sprites/ui_human.png" type="Texture" id=14]
 [ext_resource path="res://sprites/ring_white.png" type="Texture" id=15]
-[ext_resource path="res://theme_basic.tres" type="Theme" id=16]
+[ext_resource path="res://ui/theme_basic.tres" type="Theme" id=16]
 [ext_resource path="res://sprites/balloon_1.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=7]
