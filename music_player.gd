@@ -34,8 +34,9 @@ func play_intro_song():
 
 
 func play_street_song():
-	street_player.play()
-	intro_player.stop()
+	if not street_player.playing:
+		street_player.play()
+		intro_player.stop()
 
 
 func stop():
