@@ -3,7 +3,7 @@ extends Node2D
 
 func _ready():
 	if Global.is_ending:
-		Transition.transition_out()
+		Transition.wipe_out()
 		MusicPlayer.play_intro_song()
 		Global.reset()
 

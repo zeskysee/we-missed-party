@@ -30,7 +30,7 @@ func _ready():
 	# Initialize starting NPCs based on NPCData.
 	respawn()
 	respawn(false)
-	Transition.transition_out()
+	Transition.wipe_out()
 
 
 func _physics_process(_delta):

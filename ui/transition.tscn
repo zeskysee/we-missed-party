@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://transition.gd" type="Script" id=1]
-[ext_resource path="res://sounds/transition.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sounds/transition.ogg" type="AudioStream" id=1]
+[ext_resource path="res://ui/transition.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -508,7 +508,7 @@ tracks/12/keys = {
 
 [node name="Transition" type="CanvasLayer"]
 layer = 10
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="First" type="ColorRect" parent="."]
 margin_right = 1024.0
@@ -552,7 +552,7 @@ anims/in = SubResource( 1 )
 anims/out = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource( 1 )
 volume_db = -10.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

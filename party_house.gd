@@ -4,8 +4,6 @@ extends Node2D
 const DANCING_NPC = preload("res://dancing_npc.tscn")
 
 
-# Becomes true if is transitioning to the neighborhood.
-var is_transitioning = false
 # If true, NPCs spawn left side of the room in ending. False means right side.
 # This will be alternated on every spawn.
 var spawn_left = true
@@ -20,6 +18,7 @@ onready var first_speech = $FirstSpeech
 onready var second_speech = $SecondSpeech
 onready var third_speech = $ThirdSpeech
 onready var npc_spawns = $NPCSpawns
+onready var skip_instruction = $SkipInstruction
 
 # Party props.
 onready var props = $Furniture/PartyProps
@@ -35,21 +34,14 @@ func _ready():
 	# Get ending state from global, if true, then play ending.
 	if Global.is_ending:
 		play_ending()
-	pass
+	else:
+		skip_instruction.connect("skipped", self, "rearrange_for_party")
+
 
 func _input(event):
-	if Global.is_ending and not is_transitioning and \
-			(event.is_action_pressed("interact") or \
+	if Global.is_ending and (event.is_action_pressed("interact") or \
 			event.is_action_pressed("jump")):
-		is_transitioning = true
-		Transition.connect("completed", self, "_on_return_to_main_menu")
-		Transition.transition_in()
-	elif not Global.is_ending and event.is_action_pressed("skip_cutscene") \
-			and not is_transitioning:
-		rearrange_for_party()
-		start_transition()
-		if not MusicPlayer.street_player.playing:
-			MusicPlayer.play_street_song()
+		Transition.wipe_in(preload("res://ui/opening.tscn"))
 
 
 # Monster appears after first speech.
@@ -85,7 +77,7 @@ func _on_house_animation_finished(_anim_name):
 
 func _on_return_to_main_menu(anim_name):
 	if anim_name == "in":
-		get_tree().change_scene("res://opening.tscn")
+		get_tree().change_scene("res://ui/opening.tscn")
 
 
 # Rearanges the scene for the ending.
@@ -143,7 +135,8 @@ func rearrange_for_party():
 	if monster_third and monster_fourth:
 		monster_third.disconnect("tree_exited", monster_fourth, "play")
 	if monster_fourth:
-		monster_fourth.disconnect("tree_exited", self, "start_transition")
+		monster_fourth.disconnect("tree_exited", skip_instruction, "skip")
+	skip_instruction.hide()
 	for node in [first_speech, second_speech, third_speech, fourth_speech,
 			monster_first, monster_second, monster_third, monster_fourth]:
 		if is_instance_valid(node):
@@ -172,17 +165,3 @@ func spawn_npcs():
 		if dancing_npc.global_position.x > 512:
 			dancing_npc.scale.x *= -1
 		spawn_left = !spawn_left
-
-
-func start_transition():
-	if not is_transitioning:
-		is_transitioning = true
-		# warning-ignore:return_value_discarded
-		Transition.connect("completed", self, "start_game")
-		Transition.transition_in()
-
-
-func start_game(transition_name):
-	if transition_name == "in":
-		# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://neighborhood.tscn")

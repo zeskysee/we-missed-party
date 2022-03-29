@@ -1,8 +1,8 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://party_house.gd" type="Script" id=1]
 [ext_resource path="res://sprites/light_window.png" type="Texture" id=2]
-[ext_resource path="res://speech.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/speech.tscn" type="PackedScene" id=3]
 [ext_resource path="res://magic_monster.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/ring_white.png" type="Texture" id=5]
 [ext_resource path="res://sounds/fly_away.ogg" type="AudioStream" id=6]
@@ -30,6 +30,7 @@
 [ext_resource path="res://sprites/cloud_2.png" type="Texture" id=28]
 [ext_resource path="res://animation_dance.tres" type="Animation" id=29]
 [ext_resource path="res://sprites/balloon_1.png" type="Texture" id=30]
+[ext_resource path="res://ui/skip_instruction.tscn" type="PackedScene" id=31]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -595,6 +596,9 @@ tracks/2/keys = {
 [node name="PartyHouse" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="SkipInstruction" parent="." instance=ExtResource( 31 )]
+show_on_ready = true
+
 [node name="Outer" type="Node2D" parent="."]
 position = Vector2( 0, -1773 )
 
@@ -1031,7 +1035,7 @@ current = true
 position = Vector2( 278, 370 )
 
 [node name="AnimatedSprite" parent="MagicMonster/Rescale" index="0"]
-frame = 2
+frame = 0
 
 [node name="FirstSpeech" parent="MagicMonster" index="6"]
 position = Vector2( 53.9995, -42 )
@@ -1052,6 +1056,6 @@ position = Vector2( 54, -59 )
 [connection signal="tree_exited" from="FourthSpeech" to="MagicMonster/SecondSpeech" method="play"]
 [connection signal="animation_finished" from="CameraPlayer" to="." method="_on_camera_animation_finished"]
 [connection signal="tree_exited" from="MagicMonster/FirstSpeech" to="." method="_on_monster_first_tree_exited"]
-[connection signal="tree_exited" from="MagicMonster/FourthSpeech" to="." method="start_transition"]
+[connection signal="tree_exited" from="MagicMonster/FourthSpeech" to="SkipInstruction" method="skip"]
 
 [editable path="MagicMonster"]
