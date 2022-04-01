@@ -7,9 +7,6 @@ var spawn_left = true
 # List of possible [scale, y-position] for random y adjustment in NPC spawns.
 var random_scale_y = [[0.085, 502], [0.082, 497], [0.08, 492]]
 
-# Node to spawn the NPCs in.
-onready var npc_spawns = $NPCSpawns
-
 
 func _ready():
 	Global.is_ending = true
@@ -26,12 +23,12 @@ func _input(event):
 
 
 # Spawns the party go-er depending on the global ending state.
-func spawn_npcs():
+func spawn_npcs(parent = $NPCSpawns):
 	for _i in range(Global.total_number_of_npc):
 		# 1. Get the resource or sprite of the npc to spawn.
 		var dancing_npc = preload("res://dancing_npc.tscn").instance()
 		# 2. Spawn them at any x-position from 0 to 1024. y-position ~492.
-		npc_spawns.add_child(dancing_npc, true)
+		parent.add_child(dancing_npc, true)
 		var index = randi() % random_scale_y.size()
 		var x_location = rand_range(100, 462) if spawn_left else \
 				rand_range(562, 924)
