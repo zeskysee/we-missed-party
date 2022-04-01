@@ -1,36 +1,20 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://party_house.gd" type="Script" id=1]
 [ext_resource path="res://sprites/light_window.png" type="Texture" id=2]
-[ext_resource path="res://ui/speech.tscn" type="PackedScene" id=3]
-[ext_resource path="res://magic_monster.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/ring_white.png" type="Texture" id=5]
 [ext_resource path="res://sounds/fly_away.ogg" type="AudioStream" id=6]
 [ext_resource path="res://sounds/cut.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/coin.ogg" type="AudioStream" id=8]
-[ext_resource path="res://sprites/player_stand.png" type="Texture" id=9]
 [ext_resource path="res://sprites/chair.png" type="Texture" id=10]
 [ext_resource path="res://sprites/table.png" type="Texture" id=11]
-[ext_resource path="res://sprites/table_cloth.png" type="Texture" id=12]
-[ext_resource path="res://sprites/banner.png" type="Texture" id=13]
-[ext_resource path="res://sprites/fruit_bowl.png" type="Texture" id=14]
 [ext_resource path="res://sprites/speaker.png" type="Texture" id=15]
-[ext_resource path="res://sprites/cake.png" type="Texture" id=16]
-[ext_resource path="res://sprites/cake_cut.png" type="Texture" id=17]
-[ext_resource path="res://sprites/cake_plate.png" type="Texture" id=18]
-[ext_resource path="res://fonts/minimal_3x5.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://sprites/balloon_red.png" type="Texture" id=20]
-[ext_resource path="res://sprites/balloon_blue.png" type="Texture" id=21]
-[ext_resource path="res://sprites/balloon_yellow.png" type="Texture" id=22]
-[ext_resource path="res://party_popper.tscn" type="PackedScene" id=23]
 [ext_resource path="res://sprites/house_2.png" type="Texture" id=24]
 [ext_resource path="res://sprites/tree_1.png" type="Texture" id=25]
 [ext_resource path="res://sprites/house_1.png" type="Texture" id=26]
 [ext_resource path="res://sprites/cloud_1.png" type="Texture" id=27]
 [ext_resource path="res://sprites/cloud_2.png" type="Texture" id=28]
-[ext_resource path="res://animation_dance.tres" type="Animation" id=29]
 [ext_resource path="res://sprites/balloon_1.png" type="Texture" id=30]
-[ext_resource path="res://ui/skip_instruction.tscn" type="PackedScene" id=31]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.164706, 0.631373, 0.447059, 1, 1, 1, 1, 1 )
@@ -49,7 +33,7 @@ gradient = SubResource( 3 )
 [sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("PartyHouse:modulate")
+tracks/0/path = NodePath("TransformedHouse:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -157,7 +141,7 @@ tracks/8/keys = {
 "values": [ Color( 0.533333, 0.568627, 0.568627, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("House:modulate")
+tracks/9/path = NodePath("OrdinaryHouse:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -172,7 +156,7 @@ tracks/9/keys = {
 [sub_resource type="Animation" id=7]
 resource_name = "change"
 tracks/0/type = "value"
-tracks/0/path = NodePath("PartyHouse:modulate")
+tracks/0/path = NodePath("TransformedHouse:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -294,7 +278,7 @@ tracks/9/keys = {
 "values": [ Color( 0.533333, 0.568627, 0.568627, 1 ), Color( 0.568627, 0.533333, 0.564706, 1 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("House:modulate")
+tracks/10/path = NodePath("OrdinaryHouse:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -361,139 +345,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="DynamicFont" id=12]
-size = 48
-outline_size = 5
-outline_color = Color( 0.556863, 0.372549, 0.658824, 1 )
-font_data = ExtResource( 19 )
-
-[sub_resource type="Animation" id=15]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-
-[sub_resource type="Animation" id=16]
-resource_name = "hover"
-length = 4.0
-loop = true
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 2, 4 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -8, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 2, 4 )
-}
-
-[sub_resource type="Animation" id=10]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("PlayerSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 706, 468 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("PlayerSprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.1, 0.1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("PlayerSprite:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "shocked"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("PlayerSprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 706, 468 ), Vector2( 718, 462 ), Vector2( 706, 468 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("PlayerSprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( -0.1, 0.1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("PlayerSprite:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 12.3391, 0.0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -596,78 +447,75 @@ tracks/2/keys = {
 [node name="PartyHouse" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="SkipInstruction" parent="." instance=ExtResource( 31 )]
-show_on_ready = true
-
-[node name="Outer" type="Node2D" parent="."]
+[node name="Outside" type="Node2D" parent="."]
 position = Vector2( 0, -1773 )
 
-[node name="Gradient" type="Sprite" parent="Outer"]
+[node name="Gradient" type="Sprite" parent="Outside"]
 position = Vector2( 545.004, -133.999 )
 rotation = 1.5708
 scale = Vector2( 0.436021, 2282.12 )
 texture = SubResource( 2 )
 
-[node name="Ground" type="Sprite" parent="Outer/Gradient"]
+[node name="Ground" type="Sprite" parent="Outside/Gradient"]
 position = Vector2( 1105.62, -0.00280085 )
 scale = Vector2( 0.781819, 1 )
 texture = SubResource( 4 )
 
-[node name="Cloud2" type="Sprite" parent="Outer"]
+[node name="Cloud" type="Sprite" parent="Outside"]
+position = Vector2( 192, 60 )
+texture = ExtResource( 27 )
+
+[node name="Cloud2" type="Sprite" parent="Outside"]
 position = Vector2( 950, 54 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 28 )
 
-[node name="Cloud1" type="Sprite" parent="Outer"]
-position = Vector2( 192, 60 )
-texture = ExtResource( 27 )
-
-[node name="House" type="Sprite" parent="Outer"]
-position = Vector2( 501, 359 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 26 )
-
-[node name="House2" type="Sprite" parent="Outer"]
+[node name="BackgroundHouse" type="Sprite" parent="Outside"]
 modulate = Color( 1, 1, 1, 0.745098 )
 position = Vector2( 30, 434 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 24 )
 
-[node name="PartyHouse" type="Sprite" parent="Outer"]
+[node name="OrdinaryHouse" type="Sprite" parent="Outside"]
+position = Vector2( 501, 359 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 26 )
+
+[node name="TransformedHouse" type="Sprite" parent="Outside"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 501, 359 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 26 )
 
-[node name="Balloon1" type="Sprite" parent="Outer/PartyHouse"]
+[node name="Balloon1" type="Sprite" parent="Outside/TransformedHouse"]
 position = Vector2( -910, 349.999 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 30 )
 
-[node name="Balloon2" type="Sprite" parent="Outer/PartyHouse"]
+[node name="Balloon2" type="Sprite" parent="Outside/TransformedHouse"]
 position = Vector2( 923.334, 349.999 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 30 )
 
-[node name="Balloon3" type="Sprite" parent="Outer/PartyHouse"]
+[node name="Balloon3" type="Sprite" parent="Outside/TransformedHouse"]
 position = Vector2( 390, 349.999 )
 scale = Vector2( -0.3, 0.3 )
 texture = ExtResource( 30 )
 
-[node name="Balloon4" type="Sprite" parent="Outer/PartyHouse"]
+[node name="Balloon4" type="Sprite" parent="Outside/TransformedHouse"]
 position = Vector2( -380, 349.999 )
 scale = Vector2( -0.3, 0.3 )
 texture = ExtResource( 30 )
 
-[node name="Tree1" type="Sprite" parent="Outer"]
+[node name="Tree" type="Sprite" parent="Outside"]
 position = Vector2( 852, 337 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 25 )
 
-[node name="Road" type="Sprite" parent="Outer"]
+[node name="Road" type="Sprite" parent="Outside"]
 position = Vector2( 420, 455 )
 
-[node name="PlaceholderPavement" type="ColorRect" parent="Outer/Road"]
+[node name="PlaceholderPavement" type="ColorRect" parent="Outside/Road"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -682,7 +530,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Base" type="ColorRect" parent="Outer/Road/PlaceholderPavement"]
+[node name="Base" type="ColorRect" parent="Outside/Road/PlaceholderPavement"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -697,7 +545,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Shadow" type="ColorRect" parent="Outer/Road/PlaceholderPavement/Base"]
+[node name="Shadow" type="ColorRect" parent="Outside/Road/PlaceholderPavement/Base"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -712,7 +560,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlaceholderRoad" type="ColorRect" parent="Outer/Road"]
+[node name="PlaceholderRoad" type="ColorRect" parent="Outside/Road"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -727,29 +575,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RingWhite" type="Sprite" parent="Outer"]
+[node name="RingWhite" type="Sprite" parent="Outside"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 503, 415 )
 scale = Vector2( 15, 15 )
 texture = ExtResource( 5 )
 
-[node name="RingWhite2" type="Sprite" parent="Outer"]
+[node name="RingWhite2" type="Sprite" parent="Outside"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 503, 415 )
 scale = Vector2( 15, 15 )
 texture = ExtResource( 5 )
 
-[node name="RingWhite3" type="Sprite" parent="Outer"]
+[node name="RingWhite3" type="Sprite" parent="Outside"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 503, 415 )
 scale = Vector2( 15, 15 )
 texture = ExtResource( 5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Outer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Outside"]
 anims/RESET = SubResource( 8 )
 anims/change = SubResource( 7 )
 
-[node name="HouseAudio" type="AudioStreamPlayer2D" parent="Outer"]
+[node name="HouseAudio" type="AudioStreamPlayer2D" parent="Outside"]
 position = Vector2( 503, 393 )
 stream = ExtResource( 8 )
 volume_db = -4.0
@@ -771,7 +619,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Floor2" type="ColorRect" parent="."]
+[node name="FloorOutline" type="ColorRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -902,121 +750,9 @@ position = Vector2( 485, 479 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
-[node name="PartyProps" type="Node2D" parent="Furniture"]
-visible = false
-
-[node name="Banner" type="Sprite" parent="Furniture/PartyProps"]
-position = Vector2( 512, 154 )
-texture = ExtResource( 13 )
-
-[node name="Label" type="Label" parent="Furniture/PartyProps/Banner"]
-visible = false
-margin_left = -175.0
-margin_top = -31.0
-margin_right = 175.0
-margin_bottom = 95.0
-grow_horizontal = 2
-grow_vertical = 2
-custom_colors/font_color = Color( 0.937255, 0.858824, 0.0588235, 1 )
-custom_fonts/font = SubResource( 12 )
-text = "Wholesome
-Party"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TableCloth" type="Sprite" parent="Furniture/PartyProps"]
-position = Vector2( 483, 472 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 12 )
-
-[node name="CakePlate" type="Sprite" parent="Furniture/PartyProps"]
-position = Vector2( 524, 448 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 18 )
-
-[node name="Cake" type="Sprite" parent="Furniture/PartyProps/CakePlate"]
-position = Vector2( -0.5, -12 )
-texture = ExtResource( 16 )
-
-[node name="CakeCut" type="Sprite" parent="Furniture/PartyProps/CakePlate"]
-visible = false
-position = Vector2( -0.5, -12 )
-texture = ExtResource( 17 )
-
-[node name="FruitBowl" type="Sprite" parent="Furniture/PartyProps"]
-position = Vector2( 433, 418 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 14 )
-
-[node name="Balloons" type="Node2D" parent="Furniture/PartyProps"]
-
-[node name="BalloonYellow" type="Sprite" parent="Furniture/PartyProps/Balloons"]
-position = Vector2( 13, 369 )
-texture = ExtResource( 22 )
-
-[node name="BalloonRed" type="Sprite" parent="Furniture/PartyProps/Balloons"]
-position = Vector2( 41, 399 )
-texture = ExtResource( 20 )
-
-[node name="BalloonBlue" type="Sprite" parent="Furniture/PartyProps/Balloons"]
-position = Vector2( 944, 393 )
-texture = ExtResource( 21 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Furniture/PartyProps/Balloons"]
-autoplay = "hover"
-anims/RESET = SubResource( 15 )
-anims/hover = SubResource( 16 )
-
-[node name="PartyPopper" parent="Furniture/PartyProps" instance=ExtResource( 23 )]
-position = Vector2( 267, 88 )
-
-[node name="PartyPopper2" parent="Furniture/PartyProps" instance=ExtResource( 23 )]
-position = Vector2( 741, 88 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
-
-[node name="NPCSpawns" type="Node2D" parent="."]
-
-[node name="PlayerSprite" type="Sprite" parent="."]
-position = Vector2( 706, 468 )
-scale = Vector2( 0.1, 0.1 )
-z_index = 5
-texture = ExtResource( 9 )
-
-[node name="FirstSpeech" parent="." instance=ExtResource( 3 )]
-position = Vector2( 755, 392 )
-is_skippable = true
-text = "It has been so long since I've
-been to a party..."
-
-[node name="SecondSpeech" parent="." instance=ExtResource( 3 )]
-position = Vector2( 755, 392 )
-is_playing = false
-is_skippable = true
-show_on_ready = false
-text = "What is this magical monster?!"
-
-[node name="ThirdSpeech" parent="." instance=ExtResource( 3 )]
-position = Vector2( 755, 392 )
-is_playing = false
-is_skippable = true
-show_on_ready = false
-text = "Wow! My house!"
-
-[node name="FourthSpeech" parent="." instance=ExtResource( 3 )]
-position = Vector2( 755, 392 )
-is_playing = false
-is_skippable = true
-show_on_ready = false
-text = "But I have no one to party with."
-
-[node name="PlayerPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 10 )
-anims/dance = ExtResource( 29 )
-anims/shocked = SubResource( 11 )
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
 
 [node name="CameraPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 5 )
@@ -1027,35 +763,5 @@ anims/pan_camera_back = SubResource( 9 )
 stream = ExtResource( 7 )
 volume_db = -20.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 300 )
-current = true
-
-[node name="MagicMonster" parent="." instance=ExtResource( 4 )]
-position = Vector2( 278, 370 )
-
-[node name="AnimatedSprite" parent="MagicMonster/Rescale" index="0"]
-frame = 0
-
-[node name="FirstSpeech" parent="MagicMonster" index="6"]
-position = Vector2( 53.9995, -42 )
-
-[node name="SecondSpeech" parent="MagicMonster" index="7"]
-position = Vector2( 53.9995, -50 )
-
-[node name="ThirdSpeech" parent="MagicMonster" index="8"]
-position = Vector2( 53.9995, -59 )
-
-[node name="FourthSpeech" parent="MagicMonster" index="9"]
-position = Vector2( 54, -59 )
-
-[connection signal="animation_finished" from="Outer/AnimationPlayer" to="." method="_on_house_animation_finished"]
-[connection signal="tree_exited" from="FirstSpeech" to="." method="_on_first_speech_tree_exited"]
-[connection signal="tree_exited" from="SecondSpeech" to="." method="_on_second_speech_tree_exited"]
-[connection signal="tree_exited" from="ThirdSpeech" to="FourthSpeech" method="play"]
-[connection signal="tree_exited" from="FourthSpeech" to="MagicMonster/SecondSpeech" method="play"]
+[connection signal="animation_finished" from="Outside/AnimationPlayer" to="." method="_on_house_animation_finished"]
 [connection signal="animation_finished" from="CameraPlayer" to="." method="_on_camera_animation_finished"]
-[connection signal="tree_exited" from="MagicMonster/FirstSpeech" to="." method="_on_monster_first_tree_exited"]
-[connection signal="tree_exited" from="MagicMonster/FourthSpeech" to="SkipInstruction" method="skip"]
-
-[editable path="MagicMonster"]

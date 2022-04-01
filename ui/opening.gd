@@ -3,9 +3,9 @@ extends Node2D
 
 func _ready():
 	if Global.is_ending:
+		Global.reset()
 		Transition.wipe_out()
 		MusicPlayer.play_intro_song()
-		Global.reset()
 
 
 func _process(delta):

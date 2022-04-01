@@ -82,6 +82,7 @@ func play():
 	show_bubble()
 	is_playing = true
 
+
 # Plays the show animation of the speech bubble.
 func show_bubble():
 	animation_player.play("show")
