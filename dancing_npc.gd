@@ -13,7 +13,7 @@ func _ready():
 	jump()
 
 
-func _on_tween_completed(object, key):
+func _on_tween_completed(_object, _key):
 	# I dunno why I use match here, could just be if-else but meh
 	match step:
 		0:
