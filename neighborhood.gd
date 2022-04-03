@@ -49,7 +49,7 @@ func respawn(ahead = true):
 	# Remove all NPCs who were left behind.
 	for npc in npc_list.get_children():
 		if npc.name.begins_with("npc"):
-			if npc.npc_body.global_position.distance_to(player.global_position) > edge_x:
+			if npc.global_position.distance_to(player.global_position) > edge_x:
 				npc.queue_free()
 		else:
 			if npc.global_position.distance_to(player.global_position) > edge_x:
@@ -65,8 +65,10 @@ func respawn(ahead = true):
 		npc_list.add_child(npc)
 		npc.global_position = Vector2(start, 510) + data.parallax_offset
 		npc.scale = data.scale
-		npc.connect("contact", player, "_on_NPC_contact")
-		npc.connect("contact_loss", player, "_on_NPC_contact_loss")
+		
+		var npc_area = npc.find_node('Area2D')
+		npc_area.connect("contact", player, "_on_NPC_contact")
+		npc_area.connect("contact_loss", player, "_on_NPC_contact_loss")
 		player.connect("interact", npc, "_on_Player_interact", [player])
 		npc.connect("reply", self, "_on_NPC_reply")
 		npc.connect("moved_back", self, "_on_NPC_moved_back")
@@ -102,7 +104,7 @@ func _on_NPC_reply(npc_id: String, npc_position: Vector2):
 	npc_speech.is_skippable = true
 	npc_speech.position.x = npc_position.x
 	npc_speech.position.y = npc_position.y - 150
-	npc_speech.destroy_callback = funcref(self, "npc_follow_player")
+	npc_speech.connect("tree_exited", self, "npc_follow_player")
 	add_child(npc_speech)
 
 
@@ -117,8 +119,7 @@ func npc_follow_player():
 	var target_position = player.position
 	
 	# move to next blank behind player
-	# to fix positioning issue
-	target_position.x -= (30) + follow_npc_counter * 120
+	target_position.x -= (follow_npc_counter * 90)
 	target_npc.follow_player(target_position)
 
 

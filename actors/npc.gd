@@ -1,39 +1,54 @@
-extends Area2D
+extends Actor
 
-signal contact
-signal contact_loss
 signal reply
 signal moved_back
 
-export var is_moving_to_player_back: = false
-export var target_position: = Vector2.ZERO
+var target_position: = Vector2.ZERO
+var is_move_to_player_back: = false
+var is_follow_player = false
+# Reference to the player this npc body is following.
+var player
 
-onready var npc_body: = $KinematicBody2D
-onready var area_collision: = $AreaCollision
+
+onready var area: = $Area2D
 
 func _physics_process(delta):
-	if is_moving_to_player_back:
-		var current_body_position_x = position.x + npc_body.position.x
-		
-		if current_body_position_x <= target_position.x:
-			npc_body.swap_direction()
-			is_moving_to_player_back = false
+
+	if is_move_to_player_back:
+		if position.x <= target_position.x:
+			swap_direction()
 			call_deferred("emit_signal", "moved_back")
+		else	:
+			var direction = Vector2.LEFT
+			_velocity.x = speed.x * direction.x
+			_velocity = move_and_slide(_velocity)
+			.walk(direction)
 
-func _on_NPC_body_entered(body):
-	emit_signal("contact", name)
+	if is_follow_player and player != null and not player.in_conversation:
+		var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
+		var direction: = .get_input_direction()
+		_velocity = .calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
+	
+		# engine automatically move character in move_and_slide function
+		_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
+		.animate_character(direction)
+	
 
-func _on_NPC_body_exited(body):
-	emit_signal("contact_loss")
-
-func _on_Player_interact(npc_id: String, player):
+func move_to_position():
+	is_move_to_player_back = true
+	
+func swap_direction():
+	.stand()
+	is_move_to_player_back = false
+	is_follow_player = true
+	
+func _on_Player_interact(npc_id: String, target_player):
 	if npc_id == name:
-		npc_body.player = player
+		player = target_player
 		emit_signal("reply", name, position)
 
 func follow_player(player_position: Vector2):
-	is_moving_to_player_back = true
 	target_position = player_position
-	npc_body.move_to_position()
+	move_to_position()
 	
-	area_collision.disabled = true
+	area.area_collision.disabled = true

@@ -17,8 +17,6 @@ var characters_shown = 0
 var is_being_destroyed = false
 # Time elapsed since this speech node is playing.
 var time_elapsed: float = 0.0
-# Destroy callback function.
-var destroy_callback: FuncRef = null
 
 # The AnimationPlayer to control the showing of the speech bubble.
 onready var animation_player = $AnimationPlayer
@@ -59,9 +57,6 @@ func _input(event):
 
 func _on_destroy(animation_name):
 	if animation_name == "show":
-		if destroy_callback != null:
-			destroy_callback.call_func()
-			
 		queue_free()
 
 

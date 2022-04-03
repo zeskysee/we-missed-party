@@ -145,9 +145,6 @@ margin_bottom = 21.0
 theme = ExtResource( 16 )
 text = "0"
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="UINPCPlayer" type="AnimationPlayer" parent="UINPCCount"]
 anims/RESET = SubResource( 7 )
