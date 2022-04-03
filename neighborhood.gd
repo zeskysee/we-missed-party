@@ -31,6 +31,7 @@ func _ready():
 	respawn()
 	respawn(false)
 	Transition.wipe_out()
+	MusicPlayer.play_street_song()
 
 
 func _physics_process(_delta):

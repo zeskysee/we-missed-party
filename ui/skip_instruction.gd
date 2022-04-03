@@ -50,5 +50,4 @@ func skip():
 		is_skipping = true
 		Global.reset()
 		Transition.wipe_in(preload("res://neighborhood.tscn"))
-		MusicPlayer.play_street_song()
 		emit_signal("skipped")

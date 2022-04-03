@@ -336,6 +336,7 @@ node_b = NodePath("../RibbonYellow")
 softness = 5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "pop"
 anims/RESET = SubResource( 4 )
 anims/pop = SubResource( 5 )
 
