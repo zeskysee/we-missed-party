@@ -4,6 +4,8 @@ Community game for the 48-hour [Wholesome Games Jam 2022](https://itch.io/jam/wh
 of inviting everyone in your community to your magical party. The more the merrier!
 
 
+**itch.io Game Page:** https://zeskysee.itch.io/we-missed-party
+
 **Team Name:** ........ ........ ........ (disconnected)
 
 **Team Members:** @zeskysee, @z_z, @railkill
