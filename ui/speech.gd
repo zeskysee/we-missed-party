@@ -50,7 +50,7 @@ func _process(delta):
 
 func _input(event):
 	if is_skippable and (event.is_action_pressed("interact") or \
-			event.is_action_pressed("jump")):
+			event.is_action_pressed("joy_interact")):
 		if is_playing:
 			time_elapsed = time_to_finish
 		elif label.percent_visible == 1 and not is_being_destroyed:

@@ -18,7 +18,8 @@ func _ready():
 
 # Return to opening scene on interact.
 func _input(event):
-	if event.is_action_pressed("interact") or event.is_action_pressed("jump"):
+	if event.is_action_pressed("interact") or \
+			event.is_action_pressed("joy_interact"):
 		Transition.wipe_in(preload("res://ui/opening.tscn"))
 
 
