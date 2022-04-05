@@ -1,24 +1,23 @@
-extends CanvasLayer
+extends Control
 # UI instruction to tell the player that the current scene is skippable.
 
 
-signal skipped
+# Scene to skip to.
+export(PackedScene) var scene = preload("res://neighborhood.tscn")
+# If true, the instruction will pulsate on ready.
+export(bool) var pulsate = true
+# Radius of the pulsation.
+export(float) var pulse_radius = 10.0
 
-
-# If set to true, the instruction will be shown on ready.
-export(bool) var show_on_ready = false
-
-# Will be set to true once a skip is initiated.
-var is_skipping = false
-
-# Playback control for the animation states.
-onready var playback: AnimationNodeStateMachinePlayback = $AnimationTree[
-		"parameters/playback"]
+onready var label = $Label
+onready var pulsation = $Pulsation
+onready var tween = $Tween
 
 
 func _ready():
-	if show_on_ready:
-		show()
+	if pulsate:
+		_on_pulsation_completed(label, "custom_styles/normal/shadow_size")
+	show()
 
 
 func _input(event):
@@ -34,20 +33,30 @@ func _on_gui_input(event):
 		skip() # skip on left-click
 
 
+func _on_pulsation_completed(_object, _key):
+	var shadow_size = label["custom_styles/normal"].shadow_size
+	pulsation.interpolate_property(label["custom_styles/normal"], "shadow_size",
+			shadow_size, pulse_radius if shadow_size == 0 else 0, 1.0)
+	pulsation.start()
+
+
 # Hides the skip instruction.
 func hide():
-	playback.travel("reset")
+	tween.interpolate_property(label, "rect_position",
+			Vector2.ZERO, Vector2(-label.rect_size.x * 2, 0), 0.5)
+	tween.start()
 
 
 # Shows the skip instruction.
 func show():
-	playback.travel("show")
+	tween.interpolate_property(label, "rect_position",
+			Vector2(-label.rect_size.x * 2, 0), Vector2.ZERO, 0.5,
+			Tween.TRANS_CUBIC)
+	tween.start()
 
 
-# Skips to gameplay.
+# Skips to scene.
 func skip():
-	if not is_skipping:
-		is_skipping = true
+	if not Transition.is_transitioning:
 		Global.reset()
-		Transition.wipe_in(preload("res://neighborhood.tscn"))
-		emit_signal("skipped")
+		Transition.wipe_in(scene)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://fonts/minimal_3x5.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/balloon_red.png" type="Texture" id=2]
@@ -16,6 +16,14 @@
 [ext_resource path="res://ending.gd" type="Script" id=14]
 [ext_resource path="res://magic_monster.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ui/skip_instruction.tscn" type="PackedScene" id=16]
+
+[sub_resource type="StyleBoxFlat" id=19]
+content_margin_left = 5.0
+content_margin_right = 3.0
+content_margin_top = 5.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.423529, 0.698039, 0.694118, 1 )
+shadow_color = Color( 0.737255, 0.792157, 0.796078, 0.6 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 48
@@ -81,7 +89,23 @@ tracks/1/keys = {
 [node name="Ending" type="Node2D"]
 script = ExtResource( 14 )
 
-[node name="SkipInstruction" parent="." instance=ExtResource( 16 )]
+[node name="SkipCanvas" type="CanvasLayer" parent="."]
+
+[node name="SkipInstruction" parent="SkipCanvas" instance=ExtResource( 16 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -70.0
+margin_bottom = -70.0
+
+[node name="SkipInstruction2" parent="SkipCanvas" instance=ExtResource( 16 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_bottom = -40.0
+
+[node name="Label" parent="SkipCanvas/SkipInstruction2" index="0"]
+custom_styles/normal = SubResource( 19 )
+text = "Press   ' Spacebar '   to  Return  to  Title SCreen"
 
 [node name="PartyProps" type="Node2D" parent="."]
 
@@ -172,3 +196,5 @@ anims/dance = ExtResource( 13 )
 
 [node name="MagicMonster" parent="." instance=ExtResource( 15 )]
 position = Vector2( 278, 320 )
+
+[editable path="SkipCanvas/SkipInstruction2"]

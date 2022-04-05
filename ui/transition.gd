@@ -28,10 +28,10 @@ func _ready():
 
 func _on_animation_finished(anim_name):
 	if anim_name == "in":
-		is_transitioning = false
 		if scene and get_tree().change_scene_to(scene) != OK:
 			push_error("Failed to transition to scene: %s" % scene)
 			scene = null
+			is_transitioning = false
 
 
 func _on_size_changed():
@@ -54,3 +54,4 @@ func wipe_in(packed_scene: PackedScene = null):
 # Called after scene is loaded to clear the transition squares.
 func wipe_out():
 	animation_player.play("out")
+	is_transitioning = false
