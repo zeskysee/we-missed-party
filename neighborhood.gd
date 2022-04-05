@@ -9,7 +9,6 @@ var npc_spots = [
 	NPCData.new(Vector2(1920, 0))
 ]
 var spawn_npc_counter: = 1
-var follow_npc_counter: = 0
 var area_counter: = 0
 var target_npc_name: = ""
 var target_npc_position: = Vector2.ZERO
@@ -22,8 +21,7 @@ onready var player = $Player
 onready var start_x = 0
 onready var edge_x = foreground.motion_mirroring.x  # order is important
 
-onready var ui_npc_animation_player = $UINPCCount/UINPCPlayer
-onready var ui_npc_label = $UINPCCount/Control/Label
+onready var ui_npc_counter = $NPCCounter
 
 
 func _ready():
@@ -108,18 +106,15 @@ func _on_NPC_reply(npc_id: String, npc_position: Vector2):
 
 
 func npc_follow_player():
-	follow_npc_counter += 1
 	Global.total_number_of_npc += 1
-	# Play ping animation.
-	ui_npc_animation_player.play("ping")
-	ui_npc_label.text = str(follow_npc_counter)
+	ui_npc_counter.update(Global.total_number_of_npc)
 	
 	var target_npc = npc_list.get_node(target_npc_name)
 	var target_position = player.position
 	
 	# move to next blank behind player
 	# to fix positioning issue
-	target_position.x -= (30) + follow_npc_counter * 120
+	target_position.x -= 30 + Global.total_number_of_npc * 120
 	target_npc.follow_player(target_position)
 
 
