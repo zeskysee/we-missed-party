@@ -1,0 +1,202 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://fonts/minimal_3x5.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://sprites/balloon_red.png" type="Texture" id=2]
+[ext_resource path="res://sprites/cake_plate.png" type="Texture" id=3]
+[ext_resource path="res://sprites/balloon_yellow.png" type="Texture" id=4]
+[ext_resource path="res://sprites/balloon_blue.png" type="Texture" id=5]
+[ext_resource path="res://sprites/cake_cut.png" type="Texture" id=6]
+[ext_resource path="res://sprites/fruit_bowl.png" type="Texture" id=7]
+[ext_resource path="res://sprites/banner.png" type="Texture" id=8]
+[ext_resource path="res://sprites/cake.png" type="Texture" id=9]
+[ext_resource path="res://sprites/table_cloth.png" type="Texture" id=10]
+[ext_resource path="res://party_popper.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sprites/player_stand.png" type="Texture" id=12]
+[ext_resource path="res://animation_dance.tres" type="Animation" id=13]
+[ext_resource path="res://ending.gd" type="Script" id=14]
+[ext_resource path="res://magic_monster.tscn" type="PackedScene" id=15]
+[ext_resource path="res://ui/skip_instruction.tscn" type="PackedScene" id=16]
+[ext_resource path="res://ui/opening.tscn" type="PackedScene" id=17]
+
+[sub_resource type="StyleBoxFlat" id=19]
+content_margin_left = 5.0
+content_margin_right = 3.0
+content_margin_top = 5.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.423529, 0.698039, 0.694118, 1 )
+shadow_color = Color( 0.737255, 0.792157, 0.796078, 0.6 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 48
+outline_size = 5
+outline_color = Color( 0.556863, 0.372549, 0.658824, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "hover"
+length = 4.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -8, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4 )
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 512, 512 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ) ]
+}
+
+[node name="Ending" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="SkipCanvas" type="CanvasLayer" parent="."]
+
+[node name="SkipInstruction" parent="SkipCanvas" instance=ExtResource( 16 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -70.0
+margin_bottom = -70.0
+
+[node name="SkipInstruction2" parent="SkipCanvas" instance=ExtResource( 16 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_bottom = -40.0
+scene = ExtResource( 17 )
+
+[node name="Label" parent="SkipCanvas/SkipInstruction2" index="0"]
+custom_styles/normal = SubResource( 19 )
+text = "Press   ' Spacebar '   to  Return  to  Title SCreen"
+
+[node name="PartyProps" type="Node2D" parent="."]
+
+[node name="Banner" type="Sprite" parent="PartyProps"]
+position = Vector2( 512, 154 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="PartyProps/Banner"]
+margin_left = -175.0
+margin_top = -31.0
+margin_right = 175.0
+margin_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 0.937255, 0.858824, 0.0588235, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Wholesome
+Party"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TableCloth" type="Sprite" parent="PartyProps"]
+position = Vector2( 483, 472 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+
+[node name="CakePlate" type="Sprite" parent="PartyProps"]
+position = Vector2( 524, 448 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Cake" type="Sprite" parent="PartyProps/CakePlate"]
+visible = false
+position = Vector2( -0.5, -12 )
+texture = ExtResource( 9 )
+
+[node name="CakeCut" type="Sprite" parent="PartyProps/CakePlate"]
+position = Vector2( -0.5, -12 )
+texture = ExtResource( 6 )
+
+[node name="FruitBowl" type="Sprite" parent="PartyProps"]
+position = Vector2( 433, 418 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Balloons" type="Node2D" parent="PartyProps"]
+
+[node name="BalloonYellow" type="Sprite" parent="PartyProps/Balloons"]
+position = Vector2( 34.5, 369 )
+texture = ExtResource( 4 )
+
+[node name="BalloonRed" type="Sprite" parent="PartyProps/Balloons"]
+position = Vector2( 62.5, 399 )
+texture = ExtResource( 2 )
+
+[node name="BalloonBlue" type="Sprite" parent="PartyProps/Balloons"]
+position = Vector2( 949, 393 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PartyProps/Balloons"]
+autoplay = "hover"
+anims/RESET = SubResource( 15 )
+anims/hover = SubResource( 16 )
+
+[node name="PartyPopper" parent="PartyProps" instance=ExtResource( 11 )]
+position = Vector2( 267, 88 )
+
+[node name="PartyPopper2" parent="PartyProps" instance=ExtResource( 11 )]
+position = Vector2( 741, 88 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
+[node name="NPCSpawns" type="Node2D" parent="."]
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+position = Vector2( 512, 512 )
+scale = Vector2( 0.1, 0.1 )
+z_index = 5
+texture = ExtResource( 12 )
+
+[node name="PlayerPlayer" type="AnimationPlayer" parent="."]
+autoplay = "dance"
+anims/RESET = SubResource( 10 )
+anims/dance = ExtResource( 13 )
+
+[node name="MagicMonster" parent="." instance=ExtResource( 15 )]
+position = Vector2( 278, 320 )
+
+[editable path="SkipCanvas/SkipInstruction2"]

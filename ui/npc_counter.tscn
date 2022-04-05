@@ -1,0 +1,272 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ui/theme_basic.tres" type="Theme" id=1]
+[ext_resource path="res://fonts/minimal_3x5.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://sprites/ring_white.png" type="Texture" id=3]
+[ext_resource path="res://sprites/ui_human.png" type="Texture" id=4]
+[ext_resource path="res://ui/npc_counter.gd" type="Script" id=5]
+[ext_resource path="res://sounds/increase.wav" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=9]
+size = 48
+outline_size = 2
+outline_color = Color( 0.270588, 0.486275, 0.592157, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Left/RingWhite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Left/RingWhite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Top/UiHuman:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Top/RingWhite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Top/RingWhite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Left/UiHuman:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AudioStreamRandomPitch" id=10]
+audio_stream = ExtResource( 6 )
+random_pitch = 1.2
+
+[sub_resource type="Animation" id=8]
+resource_name = "ping"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Left/RingWhite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Left/RingWhite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Top/UiHuman:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.345098, 0.827451, 0.92549, 1 ), Color( 1, 1, 1, 1 ), Color( 0.345098, 0.827451, 0.92549, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Top/RingWhite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 2, 2 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Top/RingWhite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Left/UiHuman:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.345098, 0.827451, 0.92549, 1 ), Color( 1, 1, 1, 1 ), Color( 0.345098, 0.827451, 0.92549, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[node name="NPCCounter" type="CanvasLayer"]
+script = ExtResource( 5 )
+
+[node name="Top" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -8.0
+margin_right = 8.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Top"]
+margin_left = -5.0
+margin_top = -2.0
+margin_right = 21.0
+margin_bottom = 48.0
+color = Color( 0.298039, 0.627451, 0.670588, 1 )
+
+[node name="UiHuman" type="Sprite" parent="Top"]
+position = Vector2( -8, 9 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+offset = Vector2( 8, 8 )
+
+[node name="Label" type="Label" parent="Top"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -9.0
+margin_top = 58.0
+margin_right = 15.0
+margin_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 9 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="RingWhite" type="Sprite" parent="Top"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 25 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="Left" type="Control" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Left"]
+margin_left = 7.0
+margin_top = -2.0
+margin_right = 33.0
+margin_bottom = 48.0
+color = Color( 0.298039, 0.627451, 0.670588, 1 )
+
+[node name="UiHuman" type="Sprite" parent="Left"]
+position = Vector2( 4, 9 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+offset = Vector2( 8, 8 )
+
+[node name="Label" type="Label" parent="Left"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 36.0
+margin_top = 10.0
+margin_right = 60.0
+margin_bottom = 46.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 9 )
+text = "0"
+valign = 1
+
+[node name="RingWhite" type="Sprite" parent="Left"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 20, 24 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
+anims/ping = SubResource( 8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 10 )
+volume_db = -12.0

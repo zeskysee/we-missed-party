@@ -4,6 +4,8 @@ Community game for the 48-hour [Wholesome Games Jam 2022](https://itch.io/jam/wh
 of inviting everyone in your community to your magical party. The more the merrier!
 
 
+**itch.io Game Page:** https://zeskysee.itch.io/we-missed-party
+
 **Team Name:** ........ ........ ........ (disconnected)
 
 **Team Members:** @zeskysee, @z_z, @railkill
@@ -45,6 +47,7 @@ All other less refined sprites not specified above are by @railkill, they are un
 | sounds/coin.ogg | Baŝto | [NES Sounds on opengameart.org](https://opengameart.org/content/nes-sounds) | CC0 |
 | sounds/cut.ogg | Baŝto | [NES Sounds on opengameart.org](https://opengameart.org/content/nes-sounds) | CC0 |
 | sounds/fly_away.ogg | Baŝto | [NES Sounds on opengameart.org](https://opengameart.org/content/nes-sounds) | CC0 |
+| sounds/increase.wav | Juhani Junkala | [sfx_sounds_powerup6.wav from 512 Sound Effects (8-bit style)](https://opengameart.org/content/512-sound-effects-8-bit-style) | CC0 |
 | sounds/my_street.ogg | congusbongus | [My Street on opengameart.org](https://opengameart.org/content/my-street) | CC0 |
 | sounds/song1.ogg | messersm | [Chiptune Song 1 on opengameart.org](https://opengameart.org/content/chiptune-song-1) | CC0 |
 | sounds/speech_show.ogg | Kenney | [maximize_007.ogg from Kenney's Interface Sounds](https://www.kenney.nl/assets/interface-sounds) | CC0 |

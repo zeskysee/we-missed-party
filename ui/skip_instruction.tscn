@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/theme_basic.tres" type="Theme" id=1]
+[ext_resource path="res://ui/skip_instruction.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 5.0
+content_margin_right = 3.0
+content_margin_top = 5.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.423529, 0.698039, 0.694118, 1 )
+shadow_color = Color( 0.74902, 0.74902, 0.72549, 0.6 )
+
+[node name="SkipInstruction" type="Control"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 224.0
+margin_bottom = 21.0
+grow_vertical = 2
+mouse_filter = 0
+size_flags_horizontal = 4
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_styles/normal = SubResource( 1 )
+text = "Press   ' R '   to  Skip  to  Gameplay"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Pulsation" type="Tween" parent="."]
+
+[connection signal="gui_input" from="Label" to="." method="_on_gui_input"]
+[connection signal="tween_completed" from="Pulsation" to="." method="_on_pulsation_completed"]

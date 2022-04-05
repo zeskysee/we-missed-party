@@ -12,7 +12,7 @@ func get_ending_text():
 	var text: String
 	
 	if total_number_of_npc >= 19:
-		return "Super-Duper\nWholesome Party"			
+		return "Super-Duper\nWholesome Party"
 	elif total_number_of_npc >= 9:
 		return "Crazy Wholesome\nParty"
 	
@@ -31,8 +31,7 @@ func get_ending_text():
 			text = "Justice League"
 		_:
 			text = "Wholesome"
-				
-				
+	
 	return "%s\nParty" % text
 
 

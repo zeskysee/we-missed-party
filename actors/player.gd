@@ -43,13 +43,16 @@ func _physics_process(delta):
 
 
 func _invite(can_interact: bool):
-	if can_interact and Input.is_action_pressed("interact"):
+	if can_interact and (Input.is_action_pressed("interact") \
+			or MouseController.is_interacting):
 		in_conversation = true
 		status = "interacting"
+		MouseController.ignore_direction = true
 		emit_signal("invite", npc_id_in_contact)
 
 func _enter_party_house():
-	if at_party_house_door and Input.is_action_pressed("interact"):
+	if at_party_house_door and (Input.is_action_pressed("interact") \
+			or MouseController.is_interacting):
 		at_party_house_door = false
 		emit_signal("enter_party_house")
 		
@@ -60,6 +63,7 @@ func interact_npc(carry_over_id):
 func available():
 	in_conversation = false
 	status = "idle"
+	MouseController.ignore_direction = false
 
 func _on_NPC_contact(npc_id):
 	in_contact = true
