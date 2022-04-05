@@ -5,7 +5,7 @@ func _ready():
 	if Global.is_ending:
 		Global.reset()
 		Transition.wipe_out()
-		MusicPlayer.play_intro_song()
+	MusicPlayer.play_intro_song()
 
 
 func _process(_delta):

@@ -12,7 +12,6 @@ var maximum_db = 0
 func _ready():
 	volume_bar.value = minimum_db + 0.5 * (maximum_db - minimum_db)
 	AudioServer.set_bus_volume_db(0, volume_bar.value)
-	play_intro_song()
 
 
 func _input(event):
