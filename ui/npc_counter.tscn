@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ui/theme_basic.tres" type="Theme" id=1]
 [ext_resource path="res://fonts/minimal_3x5.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://sprites/ring_white.png" type="Texture" id=3]
 [ext_resource path="res://sprites/ui_human.png" type="Texture" id=4]
 [ext_resource path="res://ui/npc_counter.gd" type="Script" id=5]
+[ext_resource path="res://sounds/increase.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=9]
 size = 48
@@ -87,6 +88,10 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="AudioStreamRandomPitch" id=10]
+audio_stream = ExtResource( 6 )
+random_pitch = 1.2
+
 [sub_resource type="Animation" id=8]
 resource_name = "ping"
 tracks/0/type = "value"
@@ -160,6 +165,20 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.345098, 0.827451, 0.92549, 1 ), Color( 1, 1, 1, 1 ), Color( 0.345098, 0.827451, 0.92549, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [node name="NPCCounter" type="CanvasLayer"]
@@ -247,3 +266,7 @@ texture = ExtResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
 anims/ping = SubResource( 8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 10 )
+volume_db = -12.0
