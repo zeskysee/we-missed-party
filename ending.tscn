@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://fonts/minimal_3x5.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/balloon_red.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://ending.gd" type="Script" id=14]
 [ext_resource path="res://magic_monster.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ui/skip_instruction.tscn" type="PackedScene" id=16]
+[ext_resource path="res://ui/opening.tscn" type="PackedScene" id=17]
 
 [sub_resource type="StyleBoxFlat" id=19]
 content_margin_left = 5.0
@@ -102,6 +103,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -40.0
 margin_bottom = -40.0
+scene = ExtResource( 17 )
 
 [node name="Label" parent="SkipCanvas/SkipInstruction2" index="0"]
 custom_styles/normal = SubResource( 19 )

@@ -10,6 +10,7 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("interact") or \
-			(Input.is_action_just_pressed("joy_interact")):
+			Input.is_action_just_pressed("joy_interact") or \
+			MouseController.is_interacting:
 		if get_tree().change_scene("res://party_house.tscn") != OK:
 			push_error("Critical error! Failed to load starting scene.")

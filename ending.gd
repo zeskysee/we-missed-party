@@ -9,6 +9,7 @@ var random_scale_y = [[0.085, 502], [0.082, 497], [0.08, 492]]
 
 
 func _ready():
+	MouseController.ignore_direction = true
 	Global.is_ending = true
 	$PartyProps/Banner/Label.text = Global.get_ending_text()
 	$MagicMonster.appear()

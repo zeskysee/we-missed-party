@@ -28,8 +28,10 @@ func _ready():
 	# Initialize starting NPCs based on NPCData.
 	respawn()
 	respawn(false)
+	Global.reset()
 	Transition.wipe_out()
 	MusicPlayer.play_street_song()
+	MouseController.ignore_direction = false
 
 
 func _physics_process(_delta):

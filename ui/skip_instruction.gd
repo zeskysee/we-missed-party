@@ -29,7 +29,7 @@ func _input(event):
 func _on_gui_input(event):
 	# event is always a InputMouseEvent. This is because the gui_input signal
 	# for Control nodes only capture mouse inputs.
-	if event.is_action_pressed("interact"):
+	if event is InputEventMouseButton and MouseController.is_interacting:
 		skip() # skip on left-click
 
 
@@ -58,5 +58,4 @@ func show():
 # Skips to scene.
 func skip():
 	if not Transition.is_transitioning:
-		Global.reset()
 		Transition.wipe_in(scene)
